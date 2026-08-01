@@ -1,0 +1,604 @@
+/* Account Management Component Styles */
+.account-management {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.employer-account.dark .account-management {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.account-management h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.employer-account.dark .account-management h2 {
+    color: #f8fafc;
+}
+
+.account-management-subtitle {
+    color: #64748b;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.employer-account.dark .account-management-subtitle {
+    color: #cbd5e1;
+}
+
+/* Profile Editing Section */
+.profile-edit-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.employer-account.dark .profile-edit-section {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+    border-color: #475569;
+}
+
+.profile-edit-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+}
+
+.profile-edit-section h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employer-account.dark .profile-edit-section h3 {
+    color: #f8fafc;
+}
+
+.profile-edit-section h3::before {
+    content: '👤';
+    font-size: 1.5rem;
+}
+
+/* Profile Information Display */
+.profile-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-info-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.employer-account.dark .profile-info-item {
+    background: #334155;
+    border-color: #475569;
+}
+
+.profile-info-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #3b82f6;
+}
+
+.profile-info-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.employer-account.dark .profile-info-label {
+    color: #94a3b8;
+}
+
+.profile-info-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1e293b;
+    margin: 0;
+    word-break: break-word;
+}
+
+.employer-account.dark .profile-info-value {
+    color: #f8fafc;
+}
+
+/* Company Information Section */
+.company-info-section {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #f59e0b;
+    transition: all 0.3s ease;
+}
+
+.employer-account.dark .company-info-section {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #f59e0b;
+}
+
+.company-info-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #d97706;
+}
+
+.company-info-section h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #92400e;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employer-account.dark .company-info-section h3 {
+    color: #fbbf24;
+}
+
+.company-info-section h3::before {
+    content: '🏢';
+    font-size: 1.5rem;
+}
+
+.company-details-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.employer-account.dark .company-details-card {
+    background: #334155;
+    border-color: #475569;
+}
+
+.company-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.company-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.company-info-item label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.employer-account.dark .company-info-item label {
+    color: #94a3b8;
+}
+
+.company-info-item p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1e293b;
+    margin: 0;
+    word-break: break-word;
+}
+
+.employer-account.dark .company-info-item p {
+    color: #f8fafc;
+}
+
+.company-info-item p.verified {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.company-info-item p.pending {
+    color: #f59e0b;
+    font-weight: 600;
+}
+
+.edit-company-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.edit-company-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+}
+
+.edit-company-btn::before {
+    content: '✏️';
+    font-size: 1rem;
+}
+
+/* Security Settings Section */
+.security-section {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ef4444;
+    transition: all 0.3s ease;
+}
+
+.employer-account.dark .security-section {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #ef4444;
+}
+
+.security-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #dc2626;
+}
+
+.security-section h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #dc2626;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employer-account.dark .security-section h3 {
+    color: #fca5a5;
+}
+
+.security-section h3::before {
+    content: '🔐';
+    font-size: 1.5rem;
+}
+
+/* Quick Stats Section */
+.account-stats-section {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #10b981;
+    transition: all 0.3s ease;
+}
+
+.employer-account.dark .account-stats-section {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #10b981;
+}
+
+.account-stats-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #059669;
+}
+
+.account-stats-section h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #059669;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employer-account.dark .account-stats-section h3 {
+    color: #6ee7b7;
+}
+
+.account-stats-section h3::before {
+    content: '📊';
+    font-size: 1.5rem;
+}
+
+.quick-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.quick-stat {
+    background: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.employer-account.dark .quick-stat {
+    background: #334155;
+    border-color: #475569;
+}
+
+.quick-stat:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #10b981;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #059669;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.employer-account.dark .stat-number {
+    color: #6ee7b7;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.employer-account.dark .stat-label {
+    color: #d1d5db;
+}
+
+/* Danger Zone */
+.danger-zone {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 2px solid #ef4444;
+    position: relative;
+    overflow: hidden;
+}
+
+.employer-account.dark .danger-zone {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #ef4444;
+}
+
+.danger-zone::before {
+    content: '⚠️';
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    opacity: 0.3;
+}
+
+.danger-zone h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #dc2626;
+    margin: 0 0 1rem 0;
+}
+
+.employer-account.dark .danger-zone h3 {
+    color: #fca5a5;
+}
+
+.danger-zone p {
+    color: #7f1d1d;
+    margin: 0 0 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.employer-account.dark .danger-zone p {
+    color: #fecaca;
+}
+
+.delete-account-btn {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.delete-account-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+}
+
+.delete-account-btn::before {
+    content: '🗑️';
+    font-size: 1rem;
+}
+
+/* Edit Profile Button */
+.edit-profile-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.875rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.edit-profile-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.edit-profile-btn::before {
+    content: '✏️';
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .profile-info-grid,
+    .company-info-grid,
+    .quick-stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .account-management {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-info-grid,
+    .company-info-grid,
+    .quick-stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-edit-section,
+    .company-info-section,
+    .security-section,
+    .account-stats-section,
+    .danger-zone {
+        padding: 1.5rem;
+    }
+
+    .account-management {
+        padding: 1rem;
+    }
+
+    .account-management h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-edit-section,
+    .company-info-section,
+    .security-section,
+    .account-stats-section,
+    .danger-zone {
+        padding: 1rem;
+    }
+
+    .profile-info-item,
+    .company-details-card,
+    .quick-stat {
+        padding: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.75rem;
+    }
+
+    .edit-profile-btn,
+    .edit-company-btn,
+    .delete-account-btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Animation for sections */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-edit-section,
+.company-info-section,
+.security-section,
+.account-stats-section,
+.danger-zone {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.profile-edit-section {
+    animation-delay: 0.1s;
+}
+
+.company-info-section {
+    animation-delay: 0.2s;
+}
+
+.security-section {
+    animation-delay: 0.3s;
+}
+
+.account-stats-section {
+    animation-delay: 0.4s;
+}
+
+.danger-zone {
+    animation-delay: 0.5s;
+}
+
+/* Hover effects for interactive elements */
+.profile-info-item:hover,
+.quick-stat:hover {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}
+
+.edit-profile-btn:hover::before,
+.edit-company-btn:hover::before,
+.delete-account-btn:hover::before {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}

@@ -1,0 +1,258 @@
+/* Feedback Form Styles */
+.feedback-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.feedback-form-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+.admin-application-detail.dark .feedback-form-card,
+.job-seeker-account.dark .feedback-form-card,
+.employer-account.dark .feedback-form-card {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: #334155;
+}
+
+.feedback-form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.feedback-icon {
+    font-size: 3rem;
+    color: #3b82f6;
+    margin-bottom: 1rem;
+}
+
+.feedback-form-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+}
+
+.admin-application-detail.dark .feedback-form-header h3,
+.job-seeker-account.dark .feedback-form-header h3,
+.employer-account.dark .feedback-form-header h3 {
+    color: #f8fafc;
+}
+
+.feedback-form-header p {
+    color: #64748b;
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+.admin-application-detail.dark .feedback-form-header p,
+.job-seeker-account.dark .feedback-form-header p,
+.employer-account.dark .feedback-form-header p {
+    color: #94a3b8;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: #374151;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-application-detail.dark .form-label,
+.job-seeker-account.dark .form-label,
+.employer-account.dark .form-label {
+    color: #d1d5db;
+}
+
+.input-icon {
+    color: #3b82f6;
+    font-size: 1rem;
+}
+
+.form-input,
+.form-textarea {
+    padding: 0.875rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+    color: #1e293b;
+}
+
+.admin-application-detail.dark .form-input,
+.admin-application-detail.dark .form-textarea,
+.job-seeker-account.dark .form-input,
+.job-seeker-account.dark .form-textarea,
+.employer-account.dark .form-input,
+.employer-account.dark .form-textarea {
+    background: #0f172a;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: #9ca3af;
+}
+
+.admin-application-detail.dark .form-input::placeholder,
+.admin-application-detail.dark .form-textarea::placeholder,
+.job-seeker-account.dark .form-input::placeholder,
+.job-seeker-account.dark .form-textarea::placeholder,
+.employer-account.dark .form-input::placeholder,
+.employer-account.dark .form-textarea::placeholder {
+    color: #64748b;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.form-help {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.admin-application-detail.dark .form-help,
+.job-seeker-account.dark .form-help,
+.employer-account.dark .form-help {
+    color: #9ca3af;
+}
+
+.submit-feedback-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    margin-top: 1rem;
+}
+
+.submit-feedback-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+.submit-feedback-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-feedback-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-icon {
+    font-size: 1rem;
+}
+
+.loading-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .feedback-form-container {
+        padding: 1rem;
+    }
+
+    .feedback-form-card {
+        padding: 1.5rem;
+    }
+
+    .feedback-form-header h3 {
+        font-size: 1.25rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .submit-feedback-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .feedback-form-card {
+        padding: 1rem;
+    }
+
+    .feedback-form {
+        gap: 1rem;
+    }
+
+    .form-group {
+        gap: 0.375rem;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
+    }
+
+    .form-input,
+    .form-textarea {
+        padding: 0.625rem;
+        font-size: 0.9rem;
+    }
+
+    .submit-feedback-btn {
+        padding: 0.75rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}

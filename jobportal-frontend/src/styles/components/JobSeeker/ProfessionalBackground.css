@@ -1,0 +1,940 @@
+/* Professional Background Section Styles */
+.professional-background-section {
+    padding: 2rem 0;
+}
+
+.professional-background-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.job-seeker-account.dark .professional-background-section h2 {
+    color: #f8fafc;
+}
+
+/* Collapsible Section Styles */
+.collapsible-section {
+    background: white;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.job-seeker-account.dark .collapsible-section {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.collapsible-section:hover {
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+    transform: translateY(-2px);
+}
+
+.collapsible-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    cursor: pointer;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.job-seeker-account.dark .collapsible-header {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+    border-color: #475569;
+}
+
+.collapsible-header:hover {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.job-seeker-account.dark .collapsible-header:hover {
+    background: linear-gradient(135deg, #475569 0%, #334155 100%);
+}
+
+.collapsible-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.section-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.section-icon.skills { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+.section-icon.education { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+.section-icon.portfolio { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+
+.section-info h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 0.25rem 0;
+}
+
+.job-seeker-account.dark .section-info h3 {
+    color: #f8fafc;
+}
+
+.section-description {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.job-seeker-account.dark .section-description {
+    color: #cbd5e1;
+}
+
+.collapsible-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.collapsible-toggle:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.collapsible-toggle:active {
+    transform: translateY(0);
+}
+
+.collapsible-toggle::before {
+    content: '✏️';
+    font-size: 1rem;
+}
+
+.collapsible-toggle.expanded::after {
+    content: ' ▲';
+    font-size: 0.75rem;
+}
+
+.collapsible-toggle.collapsed::after {
+    content: ' ▼';
+    font-size: 0.75rem;
+}
+
+.collapsible-content {
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.job-seeker-account.dark .collapsible-content {
+    background: #334155;
+    border-color: #475569;
+}
+
+.collapsible-content.expanded {
+    max-height: 1000px;
+    padding: 1.5rem;
+}
+
+/* Skills Section */
+.skills-section {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.skill-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-seeker-account.dark .skill-item {
+    background: #475569;
+    border-color: #64748b;
+}
+
+.skill-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 8px 8px 0 0;
+}
+
+.skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.skill-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.job-seeker-account.dark .skill-name {
+    color: #f8fafc;
+}
+
+.skill-level {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.75rem;
+}
+
+.job-seeker-account.dark .skill-level {
+    color: #cbd5e1;
+}
+
+.skill-progress {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.job-seeker-account.dark .skill-progress {
+    background: #64748b;
+}
+
+.skill-progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Work Experience Section */
+.work-experience-section {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.experience-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-seeker-account.dark .experience-item {
+    background: #475569;
+    border-color: #64748b;
+}
+
+.experience-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 8px 8px 0 0;
+}
+
+.experience-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.experience-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+.job-seeker-account.dark .experience-title {
+    color: #f8fafc;
+}
+
+.experience-company {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0.25rem 0;
+}
+
+.job-seeker-account.dark .experience-company {
+    color: #cbd5e1;
+}
+
+.experience-duration {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    background: #f1f5f9;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+.job-seeker-account.dark .experience-duration {
+    background: #334155;
+    color: #cbd5e1;
+}
+
+.experience-description {
+    font-size: 0.875rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.job-seeker-account.dark .experience-description {
+    color: #cbd5e1;
+}
+
+/* Education History Section */
+.education-section {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.education-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-seeker-account.dark .education-item {
+    background: #475569;
+    border-color: #64748b;
+}
+
+.education-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border-radius: 8px 8px 0 0;
+}
+
+.education-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+}
+
+.education-degree {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.job-seeker-account.dark .education-degree {
+    color: #f8fafc;
+}
+
+.education-institution {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.job-seeker-account.dark .education-institution {
+    color: #cbd5e1;
+}
+
+.education-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.education-field,
+.education-year {
+    background: #f1f5f9;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+}
+
+.job-seeker-account.dark .education-meta {
+    color: #cbd5e1;
+}
+
+.job-seeker-account.dark .education-field,
+.job-seeker-account.dark .education-year {
+    background: #334155;
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.portfolio-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-seeker-account.dark .portfolio-item {
+    background: #475569;
+    border-color: #64748b;
+}
+
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    border-radius: 8px 8px 0 0;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-size: 3rem;
+}
+
+.job-seeker-account.dark .portfolio-image {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+    color: #cbd5e1;
+}
+
+.portfolio-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.job-seeker-account.dark .portfolio-title {
+    color: #f8fafc;
+}
+
+.portfolio-description {
+    font-size: 0.875rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.job-seeker-account.dark .portfolio-description {
+    color: #cbd5e1;
+}
+
+.portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.portfolio-tag {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.job-seeker-account.dark .portfolio-tag {
+    background: #334155;
+    color: #cbd5e1;
+}
+
+/* Empty States */
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #64748b;
+}
+
+.job-seeker-account.dark .empty-state {
+    color: #cbd5e1;
+}
+
+.empty-state-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.job-seeker-account.dark .empty-state h4 {
+    color: #f8fafc;
+}
+
+.empty-state p {
+    margin-bottom: 1.5rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+/* Loading States */
+.loading-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    color: #64748b;
+}
+
+.job-seeker-account.dark .loading-state {
+    color: #cbd5e1;
+}
+
+.loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #e2e8f0;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.75rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .professional-background-section {
+        padding: 1.5rem 0;
+    }
+
+    .collapsible-section {
+        margin-bottom: 1rem;
+    }
+
+    .collapsible-header {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .collapsible-header-content {
+        width: 100%;
+    }
+
+    .collapsible-toggle {
+        align-self: flex-end;
+    }
+
+    .collapsible-content {
+        padding: 1rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .education-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .professional-background-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .collapsible-section {
+        margin-bottom: 0.75rem;
+    }
+
+    .section-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .section-info h3 {
+        font-size: 1.125rem;
+    }
+
+    .collapsible-toggle {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .skill-item,
+    .experience-item,
+    .education-item,
+    .portfolio-item {
+        padding: 1rem;
+    }
+
+    .portfolio-image {
+        height: 150px;
+        font-size: 2rem;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .collapsible-section,
+    .skill-item,
+    .experience-item,
+    .education-item,
+    .portfolio-item,
+    .collapsible-toggle {
+        transition: none;
+    }
+
+    .collapsible-section:hover,
+    .skill-item:hover,
+    .experience-item:hover,
+    .education-item:hover,
+    .portfolio-item:hover {
+        transform: none;
+    }
+
+    .loading-spinner {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .collapsible-section,
+    .skill-item,
+    .experience-item,
+    .education-item,
+    .portfolio-item {
+        border: 2px solid;
+    }
+
+    .collapsible-toggle {
+        border: 2px solid white;
+    }
+}
+
+/* Focus visible for better accessibility */
+.collapsible-toggle:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.job-seeker-account.dark .collapsible-toggle:focus-visible {
+    outline-color: #60a5fa;
+}
+
+/* Print styles */
+@media print {
+    .collapsible-section {
+        box-shadow: none;
+        border: 1px solid #000;
+        break-inside: avoid;
+    }
+
+    .collapsible-toggle {
+        display: none;
+    }
+
+    .collapsible-content {
+        max-height: none !important;
+    }
+
+    .skill-item,
+    .experience-item,
+    .education-item,
+    .portfolio-item {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+}
+
+/* Animation for content loading */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.collapsible-section {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+.collapsible-section:nth-child(1) { animation-delay: 0.1s; }
+.collapsible-section:nth-child(2) { animation-delay: 0.2s; }
+.collapsible-section:nth-child(3) { animation-delay: 0.3s; }
+
+/* Enhanced visual hierarchy */
+.professional-background-section h2 {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.professional-background-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 2px;
+}
+
+/* Enhanced button styling */
+.collapsible-toggle {
+    position: relative;
+    overflow: hidden;
+}
+
+.collapsible-toggle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.collapsible-toggle:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Improved section icons */
+.section-icon {
+    position: relative;
+    overflow: hidden;
+}
+
+.section-icon::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+}
+
+.section-icon:hover::before {
+    animation: shine 0.5s ease;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Enhanced empty states */
+.empty-state {
+    position: relative;
+    overflow: hidden;
+}
+
+.empty-state::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.02), transparent);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Improved card styling */
+.skill-item,
+.experience-item,
+.education-item,
+.portfolio-item {
+    position: relative;
+}
+
+.skill-item::after,
+.experience-item::after,
+.education-item::after,
+.portfolio-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0;
+    border-color: transparent rgba(59, 130, 246, 0.1) transparent transparent;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover::after,
+.experience-item:hover::after,
+.education-item:hover::after,
+.portfolio-item:hover::after {
+    border-color: transparent rgba(59, 130, 246, 0.2) transparent transparent;
+}
+
+/* Enhanced typography */
+.section-info h3 {
+    position: relative;
+    display: inline-block;
+}
+
+.section-info h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    transition: width 0.3s ease;
+}
+
+.collapsible-section:hover .section-info h3::after {
+    width: 100%;
+}
+
+/* Improved meta information */
+.education-meta,
+.portfolio-tags {
+    position: relative;
+}
+
+.education-meta::before,
+.portfolio-tags::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 60%;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 2px;
+}
+
+.education-meta {
+    padding-left: 1rem;
+}
+
+.portfolio-tags {
+    padding-left: 1rem;
+}

@@ -1,0 +1,631 @@
+/* Analytics & Insights Component Styles */
+.analytics-insights {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.employer-account.dark .analytics-insights {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.analytics-insights h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.employer-account.dark .analytics-insights h2 {
+    color: #f8fafc;
+}
+
+.analytics-insights-subtitle {
+    color: #64748b;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.employer-account.dark .analytics-insights-subtitle {
+    color: #cbd5e1;
+}
+
+/* Statistics Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.employer-account.dark .stat-card {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+    border-color: #475569;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #10b981, #059669, #047857);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-color: #10b981;
+}
+
+.stat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.stat-icon.total {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.stat-icon.applications {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.stat-icon.approved {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.stat-icon.hires {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+}
+
+.stat-icon.views {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.stat-icon.rating {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: white;
+}
+
+.stat-info h4 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    line-height: 1;
+}
+
+.employer-account.dark .stat-info h4 {
+    color: #f8fafc;
+}
+
+.stat-info p {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #64748b;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.employer-account.dark .stat-info p {
+    color: #cbd5e1;
+}
+
+/* Job Performance Overview */
+.job-performance-overview {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #bbf7d0;
+}
+
+.employer-account.dark .job-performance-overview {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #10b981;
+}
+
+.job-performance-overview h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #059669;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employer-account.dark .job-performance-overview h4 {
+    color: #6ee7b7;
+}
+
+.job-performance-overview h4::before {
+    content: '📊';
+    font-size: 1.5rem;
+}
+
+.performance-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.performance-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.performance-bar div:first-child {
+    flex: 1;
+    height: 24px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    background: #e2e8f0;
+}
+
+.employer-account.dark .performance-bar div:first-child {
+    background: #475569;
+}
+
+.bar {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.8s ease;
+}
+
+.approved-bar {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.pending-bar {
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+}
+
+.rejected-bar {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.percentage {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    min-width: 60px;
+    text-align: right;
+}
+
+.employer-account.dark .percentage {
+    color: #d1d5db;
+}
+
+/* Hiring Efficiency */
+.hiring-efficiency {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #fcd34d;
+}
+
+.employer-account.dark .hiring-efficiency {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #f59e0b;
+}
+
+.hiring-efficiency h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #d97706;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employer-account.dark .hiring-efficiency h4 {
+    color: #fbbf24;
+}
+
+.hiring-efficiency h4::before {
+    content: '🎯';
+    font-size: 1.5rem;
+}
+
+.efficiency-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.metric {
+    background: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid #e2e8f0;
+}
+
+.employer-account.dark .metric {
+    background: #334155;
+    border-color: #475569;
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.employer-account.dark .metric-label {
+    color: #94a3b8;
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.employer-account.dark .metric-value {
+    color: #f8fafc;
+}
+
+/* Advanced Analytics */
+.advanced-analytics {
+    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #d1d5db;
+}
+
+.employer-account.dark .advanced-analytics {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+    border-color: #64748b;
+}
+
+.advanced-analytics h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #374151;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employer-account.dark .advanced-analytics h4 {
+    color: #f8fafc;
+}
+
+.advanced-analytics h4::before {
+    content: '📈';
+    font-size: 1.5rem;
+}
+
+.analytics-chart-placeholder {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    border: 2px dashed #d1d5db;
+}
+
+.employer-account.dark .analytics-chart-placeholder {
+    background: #1e293b;
+    border-color: #64748b;
+}
+
+.analytics-chart-placeholder h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 1rem 0;
+}
+
+.employer-account.dark .analytics-chart-placeholder h4 {
+    color: #f8fafc;
+}
+
+.analytics-chart-placeholder p {
+    color: #6b7280;
+    margin: 0.5rem 0;
+    font-size: 0.95rem;
+}
+
+.employer-account.dark .analytics-chart-placeholder p {
+    color: #9ca3af;
+}
+
+.analytics-chart-placeholder ul {
+    text-align: left;
+    margin: 1.5rem 0 0 0;
+    padding-left: 1.5rem;
+}
+
+.analytics-chart-placeholder li {
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.employer-account.dark .analytics-chart-placeholder li {
+    color: #d1d5db;
+}
+
+/* Performance Insights */
+.performance-insights {
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #a7f3d0;
+}
+
+.employer-account.dark .performance-insights {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #10b981;
+}
+
+.performance-insights h4 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #059669;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.employer-account.dark .performance-insights h4 {
+    color: #6ee7b7;
+}
+
+.performance-insights h4::before {
+    content: '💡';
+    font-size: 1.5rem;
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.insight-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.employer-account.dark .insight-card {
+    background: #334155;
+    border-color: #475569;
+}
+
+.insight-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #10b981;
+}
+
+.insight-card h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1rem 0;
+}
+
+.employer-account.dark .insight-card h5 {
+    color: #f8fafc;
+}
+
+.insight-card p {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #059669;
+    margin: 0.25rem 0;
+}
+
+.employer-account.dark .insight-card p {
+    color: #6ee7b7;
+}
+
+.insight-card small {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.employer-account.dark .insight-card small {
+    color: #9ca3af;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .stats-grid,
+    .insights-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .analytics-insights {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-grid,
+    .insights-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .performance-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .performance-bar div:first-child {
+        width: 100%;
+    }
+
+    .percentage {
+        text-align: left;
+        min-width: auto;
+    }
+
+    .analytics-insights {
+        padding: 1rem;
+    }
+
+    .job-performance-overview,
+    .hiring-efficiency,
+    .advanced-analytics,
+    .performance-insights {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid,
+    .insights-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card,
+    .insight-card {
+        padding: 1.25rem;
+    }
+
+    .stat-info h4 {
+        font-size: 2rem;
+    }
+
+    .metric-value {
+        font-size: 1.25rem;
+    }
+
+    .analytics-chart-placeholder {
+        padding: 1.5rem;
+    }
+}
+
+/* Animation for sections */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stats-grid .stat-card,
+.job-performance-overview,
+.hiring-efficiency,
+.advanced-analytics,
+.performance-insights {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.stats-grid .stat-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.stats-grid .stat-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.stats-grid .stat-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.stats-grid .stat-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.stats-grid .stat-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.stats-grid .stat-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+.job-performance-overview {
+    animation-delay: 0.7s;
+}
+
+.hiring-efficiency {
+    animation-delay: 0.8s;
+}
+
+.advanced-analytics {
+    animation-delay: 0.9s;
+}
+
+.performance-insights {
+    animation-delay: 1s;
+}
+
+/* Hover effects for interactive elements */
+.stat-card:hover .stat-icon,
+.insight-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.performance-bar:hover .percentage {
+    color: #059669;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+.employer-account.dark .performance-bar:hover .percentage {
+    color: #6ee7b7;
+}

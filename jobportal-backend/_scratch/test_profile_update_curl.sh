@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Profile Update Test using curl
+# This script demonstrates how to update a user's profile using curl commands
+
+echo "Testing Profile Update with curl"
+echo "================================="
+
+# Example curl command to update profile
+echo "Run this curl command to update the profile:"
+echo ""
+echo "curl -X PUT \"http://127.0.0.1:8000/api/profile\" \\"
+echo "  -H \"Authorization: Bearer 119|gBNBLcbWruHQmZFgXE2KxHA33seGwdBzctdk70Anf8ddc1c1\" \\"
+echo "  -H \"Content-Type: application/json\" \\"
+echo "  -d '{"
+echo "    \"name\": \"Henoke Adroxs androws\","
+echo "    \"phone\": \"+251977586823\","
+echo "    \"degree\": \"Bachelor\","
+echo "    \"fieldOfStudy\": \"Computer Science\","
+echo "    \"experience\": 8,"
+echo "    \"age\": 36,"
+echo "    \"gender\": \"female\","
+echo "    \"address\": \"bahirDar\","
+echo "    \"website\": \"https://www.example.com\","
+echo "    \"location\": \"b.d\""
+echo "  }'"
+echo ""
+
+echo "For form-data (multipart) request with profile picture, use this format:"
+echo ""
+echo "curl -X PUT \"http://127.0.0.1:8000/api/profile\" \\"
+echo "  -H \"Authorization: Bearer 119|gBNBLcbWruHQmZFgXE2KxHA33seGwdBzctdk70Anf8ddc1c1\" \\"
+echo "  -F \"name=Henoke Adroxs androws\" \\"
+echo "  -F \"phone=+251977586823\" \\"
+echo "  -F \"degree=Bachelor\" \\"
+echo "  -F \"fieldOfStudy=Computer Science\" \\"
+echo "  -F \"experience=8\" \\"
+echo "  -F \"age=36\" \\"
+echo "  -F \"gender=female\" \\"
+echo "  -F \"address=bahirDar\" \\"
+echo "  -F \"website=https://www.example.com\" \\"
+echo "  -F \"location=b.d\" \\"
+echo "  -F \"profile_picture=@/path/to/your/profile.jpg\""
+echo ""
+
+echo "To test with a real token, first get a valid token by logging in:"
+echo ""
+echo "curl -X POST \"http://127.0.0.1:8000/api/login\" \\"
+echo "  -H \"Content-Type: application/json\" \\"
+echo "  -d '{\"email\": \"test@example.com\", \"password\": \"password\"}'"
+echo ""

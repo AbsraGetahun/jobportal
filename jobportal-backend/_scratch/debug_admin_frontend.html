@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Admin Frontend</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .test-section { background: white; margin: 20px 0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .success { color: #10b981; font-weight: bold; }
+        .error { color: #ef4444; font-weight: bold; }
+        .warning { color: #f59e0b; font-weight: bold; }
+        .info { color: #3b82f6; font-weight: bold; }
+        button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #2563eb; }
+        .result { margin: 10px 0; padding: 10px; background: #f8fafc; border-radius: 5px; font-family: monospace; white-space: pre-wrap; max-height: 200px; overflow-y: auto; }
+        input { padding: 8px; margin: 5px; border: 1px solid #ccc; border-radius: 4px; width: 200px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Debug Admin Frontend Issues</h1>
+        <p>This tool helps identify why admin pages are showing empty data.</p>
+
+        <div class="test-section">
+            <h2>🔑 Step 1: Check Authentication</h2>
+            <button onclick="checkAuth()">Check Authentication Status</button>
+            <div id="auth-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🌐 Step 2: Test API Connectivity</h2>
+            <button onclick="testAPIConnection()">Test API Connection</button>
+            <div id="api-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Step 3: Test Admin Endpoints</h2>
+            <button onclick="testAdminStats()">Test Admin Stats</button>
+            <button onclick="testAdminJobSeekers()">Test Job Seekers</button>
+            <button onclick="testAdminEmployers()">Test Employers</button>
+            <button onclick="testAdminJobs()">Test Jobs</button>
+            <button onclick="testAdminApplications()">Test Applications</button>
+            <div id="admin-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔗 Step 4: Test Frontend Navigation</h2>
+            <p>Try these URLs in your browser:</p>
+            <ul>
+                <li><a href="http://localhost:3000/admin/dashboard" target="_blank">Admin Dashboard</a></li>
+                <li><a href="http://localhost:3000/admin/jobseekers" target="_blank">Job Seekers</a></li>
+                <li><a href="http://localhost:3000/admin/employers" target="_blank">Employers</a></li>
+                <li><a href="http://localhost:3000/admin/jobs" target="_blank">Jobs</a></li>
+                <li><a href="http://localhost:3000/admin/applications" target="_blank">Applications</a></li>
+            </ul>
+        </div>
+
+        <div class="test-section">
+            <h2>🧹 Step 5: Clear Cache & Reset</h2>
+            <button onclick="clearAllData()">Clear All Browser Data</button>
+            <button onclick="resetAndLogin()">Reset & Go to Login</button>
+            <div id="reset-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📋 Step 6: Manual API Test</h2>
+            <p>Test any API endpoint manually:</p>
+            <input type="text" id="api-endpoint" placeholder="e.g., /admin/jobseekers" value="/admin/jobseekers">
+            <button onclick="testManualAPI()">Test Manual API</button>
+            <div id="manual-result"></div>
+        </div>
+    </div>
+
+    <script>
+        let authToken = null;
+
+        async function makeRequest(endpoint, method = 'GET', data = null) {
+            const headers = {
+                'Accept': 'application/json'
+            };
+
+            if (authToken) {
+                headers['Authorization'] = `Bearer ${authToken}`;
+            }
+
+            const config = { method, headers };
+
+            if (data && method !== 'GET') {
+                headers['Content-Type'] = 'application/json';
+                config.body = JSON.stringify(data);
+            }
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api${endpoint}`, config);
+                const result = await response.json();
+                return { success: response.ok, status: response.status, data: result };
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        }
+
+        async function checkAuth() {
+            const resultDiv = document.getElementById('auth-result');
+            resultDiv.innerHTML = '<div class="info">🔍 Checking authentication...</div>';
+
+            // Check localStorage
+            const token = localStorage.getItem('access_token');
+            const user = localStorage.getItem('user');
+
+            let authStatus = '<div class="result">';
+
+            if (token) {
+                authToken = token;
+                authStatus += `✅ Token found: ${token.substring(0, 20)}...<br>`;
+            } else {
+                authStatus += '❌ No token found in localStorage<br>';
+            }
+
+            if (user) {
+                authStatus += `✅ User data found: ${user}<br>`;
+            } else {
+                authStatus += '❌ No user data found<br>';
+            }
+
+            // Test token validity
+            if (token) {
+                const testResult = await makeRequest('/user');
+                if (testResult.success) {
+                    authStatus += '✅ Token is valid<br>';
+                } else {
+                    authStatus += `❌ Token is invalid: ${testResult.data?.message || 'Unknown error'}<br>`;
+                }
+            }
+
+            authStatus += '</div>';
+            resultDiv.innerHTML = authStatus;
+        }
+
+        async function testAPIConnection() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = '<div class="info">🔗 Testing API connection...</div>';
+
+            try {
+                const response = await fetch('http://127.0.0.1:8000/api/test-auth');
+                if (response.ok) {
+                    resultDiv.innerHTML = '<div class="success">✅ API connection successful</div>';
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ API connection failed: ${response.status}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ Network error: ${error.message}</div>`;
+            }
+        }
+
+        async function testAdminStats() {
+            const resultDiv = document.getElementById('admin-result');
+            resultDiv.innerHTML = '<div class="info">📊 Testing admin stats...</div>';
+
+            const result = await makeRequest('/admin/stats');
+
+            if (result.success) {
+                const stats = result.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Admin stats working!</div>
+                    <div class="result">
+📊 Stats Data:
+• Total Users: ${stats.totalUsers || 0}
+• Job Seekers: ${stats.totalJobSeekers || 0}
+• Employers: ${stats.totalEmployers || 0}
+• Active Jobs: ${stats.activeJobs || 0}
+• Pending Jobs: ${stats.pendingJobs || 0}
+• Applications: ${stats.totalApplications || 0}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Admin stats failed!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testAdminJobSeekers() {
+            const resultDiv = document.getElementById('admin-result');
+            resultDiv.innerHTML = '<div class="info">👥 Testing job seekers...</div>';
+
+            const result = await makeRequest('/admin/jobseekers');
+
+            if (result.success && result.data?.data) {
+                const seekers = result.data.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Job seekers working! Found ${seekers.length} users</div>
+                    <div class="result">
+👥 Sample Job Seekers:
+${seekers.slice(0, 3).map(s => `• ${s.name} (${s.email}) - ${s.is_verified ? 'Verified' : 'Not Verified'}`).join('\n')}
+${seekers.length > 3 ? `... and ${seekers.length - 3} more` : ''}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Job seekers failed!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testAdminEmployers() {
+            const resultDiv = document.getElementById('admin-result');
+            resultDiv.innerHTML = '<div class="info">🏢 Testing employers...</div>';
+
+            const result = await makeRequest('/admin/employers');
+
+            if (result.success && result.data?.data) {
+                const employers = result.data.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Employers working! Found ${employers.length} companies</div>
+                    <div class="result">
+🏢 Sample Employers:
+${employers.slice(0, 3).map(e => `• ${e.name} (${e.companyName || 'No Company'}) - ${e.is_verified ? 'Verified' : 'Not Verified'}`).join('\n')}
+${employers.length > 3 ? `... and ${employers.length - 3} more` : ''}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Employers failed!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testAdminJobs() {
+            const resultDiv = document.getElementById('admin-result');
+            resultDiv.innerHTML = '<div class="info">💼 Testing jobs...</div>';
+
+            const result = await makeRequest('/admin/jobs');
+
+            if (result.success && result.data?.data) {
+                const jobs = result.data.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Jobs working! Found ${jobs.length} postings</div>
+                    <div class="result">
+💼 Sample Jobs:
+${jobs.slice(0, 3).map(j => `• ${j.title} (${j.location}) - ${j.is_approved ? 'Approved' : 'Pending'}`).join('\n')}
+${jobs.length > 3 ? `... and ${jobs.length - 3} more` : ''}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Jobs failed!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testAdminApplications() {
+            const resultDiv = document.getElementById('admin-result');
+            resultDiv.innerHTML = '<div class="info">📋 Testing applications...</div>';
+
+            const result = await makeRequest('/admin/applications');
+
+            if (result.success && result.data?.data) {
+                const applications = result.data.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Applications working! Found ${applications.length} submissions</div>
+                    <div class="result">
+📋 Sample Applications:
+${applications.slice(0, 3).map(a => `• ${a.user?.name || 'Unknown'} → ${a.job?.title || 'Unknown Job'} (${a.status})`).join('\n')}
+${applications.length > 3 ? `... and ${applications.length - 3} more` : ''}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Applications failed!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testManualAPI() {
+            const endpoint = document.getElementById('api-endpoint').value;
+            const resultDiv = document.getElementById('manual-result');
+            resultDiv.innerHTML = `<div class="info">🔧 Testing ${endpoint}...</div>`;
+
+            const result = await makeRequest(endpoint);
+
+            if (result.success) {
+                resultDiv.innerHTML = `
+                    <div class="success">✅ ${endpoint} successful!</div>
+                    <div class="result">${JSON.stringify(result.data, null, 2)}</div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ ${endpoint} failed!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        function clearAllData() {
+            localStorage.clear();
+            sessionStorage.clear();
+            authToken = null;
+            document.getElementById('reset-result').innerHTML = '<div class="success">✅ All browser data cleared!</div>';
+        }
+
+        function resetAndLogin() {
+            clearAllData();
+            window.open('http://localhost:3000/login', '_blank');
+            document.getElementById('reset-result').innerHTML = '<div class="info">🔄 Opening login page...</div>';
+        }
+
+        // Auto-check auth on load
+        window.onload = function() {
+            checkAuth();
+        };
+    </script>
+</body>
+</html>

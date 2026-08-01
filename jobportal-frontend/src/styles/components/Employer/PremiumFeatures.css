@@ -1,0 +1,405 @@
+/* Premium Features Component Styles */
+.premium-features {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.employer-account.dark .premium-features {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.premium-features h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    background: linear-gradient(135deg, var(--employer-primary) 0%, var(--employer-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.employer-account.dark .premium-features h2 {
+    color: #f8fafc;
+}
+
+.premium-subtitle {
+    color: #64748b;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.employer-account.dark .premium-subtitle {
+    color: #cbd5e1;
+}
+
+.premium-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.premium-feature-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.employer-account.dark .premium-feature-card {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+    border-color: #475569;
+}
+
+.premium-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--employer-primary) 0%, var(--employer-secondary) 100%);
+    border-radius: 16px 16px 0 0;
+}
+
+.premium-feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    border-color: var(--employer-primary);
+}
+
+.premium-feature-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.premium-feature-icon {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--employer-primary) 0%, var(--employer-secondary) 100%);
+    border-radius: 16px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    color: white;
+    box-shadow: 0 8px 16px rgba(3, 105, 161, 0.3);
+}
+
+.premium-feature-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.employer-account.dark .premium-feature-title {
+    color: #f8fafc;
+}
+
+.premium-feature-description {
+    color: #64748b;
+    margin: 0 0 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.employer-account.dark .premium-feature-description {
+    color: #cbd5e1;
+}
+
+.premium-feature-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.premium-benefit-tag {
+    background: linear-gradient(135deg, rgba(3, 105, 161, 0.1) 0%, rgba(13, 148, 136, 0.1) 100%);
+    color: var(--employer-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid rgba(3, 105, 161, 0.2);
+    transition: all 0.2s ease;
+}
+
+.employer-account.dark .premium-benefit-tag {
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.2) 0%, rgba(3, 105, 161, 0.2) 100%);
+    color: var(--employer-secondary);
+    border-color: rgba(13, 148, 136, 0.3);
+}
+
+.premium-benefit-tag:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(3, 105, 161, 0.2);
+}
+
+/* Upgrade CTA Section */
+.premium-upgrade-section {
+    background: linear-gradient(135deg, var(--employer-primary) 0%, var(--employer-primary-hover) 50%, var(--employer-secondary) 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    color: white;
+    margin-top: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-upgrade-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.upgrade-content {
+    position: relative;
+    z-index: 2;
+}
+
+.upgrade-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.upgrade-description {
+    font-size: 1.1rem;
+    margin: 0 0 2rem 0;
+    opacity: 0.95;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.upgrade-features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.upgrade-feature-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.upgrade-button {
+    background: white;
+    color: var(--employer-primary);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.upgrade-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.upgrade-button:active {
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .premium-features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .premium-features {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .premium-features-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .premium-features {
+        padding: 1rem;
+    }
+
+    .premium-features h2 {
+        font-size: 1.5rem;
+    }
+
+    .premium-feature-card {
+        padding: 1.5rem;
+    }
+
+    .premium-feature-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .premium-feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .premium-upgrade-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .upgrade-title {
+        font-size: 1.5rem;
+    }
+
+    .upgrade-description {
+        font-size: 1rem;
+    }
+
+    .upgrade-features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .upgrade-feature-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .upgrade-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .premium-features {
+        padding: 0.75rem;
+    }
+
+    .premium-features-grid {
+        gap: 1rem;
+    }
+
+    .premium-feature-card {
+        padding: 1.25rem;
+    }
+
+    .premium-feature-benefits {
+        justify-content: center;
+    }
+
+    .premium-benefit-tag {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .premium-upgrade-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .upgrade-title {
+        font-size: 1.25rem;
+    }
+
+    .upgrade-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Animation for premium feature cards */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.premium-feature-card {
+    animation: slideInUp 0.8s ease-out;
+}
+
+.premium-feature-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.premium-feature-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.premium-feature-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.premium-feature-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Special hover effects for premium cards */
+.premium-feature-card:hover .premium-feature-icon {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.premium-feature-card:hover .premium-benefit-tag {
+    transform: translateY(-2px);
+    transition: transform 0.2s ease;
+}

@@ -1,0 +1,161 @@
+.applicant-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.applicant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.applicant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.applicant-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.applicant-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.accept-btn {
+    background-color: #2ecc71;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.accept-btn:hover {
+    background-color: #27ae60;
+}
+
+.reject-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.reject-btn:hover {
+    background-color: #c0392b;
+}
+
+.applicant-meta {
+    margin-bottom: 15px;
+}
+
+.applicant-meta p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.details-btn {
+    background-color: #3498db;
+    color: white;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.details-btn:hover {
+    background-color: #2980b9;
+}
+
+.applicant-details {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.applicant-details p {
+    margin: 8px 0;
+}
+
+/* Cover Letter Section */
+.cover-letter-section {
+    margin-top: 15px;
+}
+
+.cover-letter-section h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.cover-letter-text {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #495057;
+    white-space: pre-wrap;
+}
+
+.no-cover-letter {
+    font-style: italic;
+    color: #6c757d;
+}
+
+/* Resume Section */
+.resume-section {
+    margin-top: 15px;
+}
+
+.resume-section h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.resume-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.resume-info p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.download-resume-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    align-self: flex-start;
+    font-size: 14px;
+}
+
+.download-resume-btn:hover {
+    background-color: #2980b9;
+}
+
+.no-resume {
+    font-style: italic;
+    color: #6c757d;
+}

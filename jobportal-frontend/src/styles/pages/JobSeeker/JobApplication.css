@@ -1,0 +1,236 @@
+/* Base Styles */
+.job-application-page {
+    min-height: 100vh;
+    background-color: #f8fafc;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.application-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border: 2px solid rgba(15, 19, 243, 0.274);
+    border-radius: 10px;
+}
+
+.application-container h1 {
+    color: #2563eb;
+    margin-bottom: 8px;
+    font-size: 2rem;
+}
+
+.subtitle {
+    color: #64748b;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+/* Form Styles */
+.application-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #334155;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* File Upload Styles */
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upload-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    cursor: pointer;
+    flex: 1;
+    transition: background-color 0.3s;
+}
+
+.upload-label:hover {
+    background-color: #f1f5f9;
+}
+
+.upload-icon {
+    color: #2563eb;
+    font-size: 1.2rem;
+}
+
+.upload-label span {
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.upload-label input[type="file"] {
+    display: none;
+}
+
+.remove-file {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
+}
+
+.remove-file:hover {
+    background-color: #fee2e2;
+}
+
+.file-hint {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* Resume Attachment */
+.attach-resume {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background-color: #f0f7ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    color: #2563eb;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.attach-resume:hover {
+    background-color: #dbeafe;
+}
+
+.attach-icon {
+    font-size: 1.2rem;
+}
+
+.resume-hint {
+    font-size: 0.85rem;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* Submit Button */
+.form-actions {
+    margin-top: 20px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #1d4ed8;
+}
+
+.submit-button:disabled {
+    background-color: #93c5fd;
+    cursor: not-allowed;
+}
+
+/* Success Message */
+.success-message {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 8px;
+    color: #065f46;
+    margin-top: 20px;
+}
+
+.success-icon {
+    font-size: 1.5rem;
+    color: #10b981;
+}
+
+.success-message p {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .application-container {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .job-application-page {
+        padding: 20px 15px;
+    }
+
+    .application-container {
+        padding: 25px 20px;
+    }
+
+    .application-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .file-upload {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .remove-file {
+        align-self: flex-end;
+    }
+}

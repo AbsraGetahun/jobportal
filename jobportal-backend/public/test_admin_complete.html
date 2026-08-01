@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Admin Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .test-section { background: white; margin: 20px 0; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .success { color: #10b981; font-weight: bold; }
+        .error { color: #ef4444; font-weight: bold; }
+        .warning { color: #f59e0b; font-weight: bold; }
+        .info { color: #3b82f6; font-weight: bold; }
+        button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #2563eb; }
+        .result { margin: 10px 0; padding: 10px; background: #f8fafc; border-radius: 5px; font-family: monospace; white-space: pre-wrap; max-height: 300px; overflow-y: auto; }
+        .status { padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; }
+        .status.success { background: #d1fae5; color: #065f46; }
+        .status.error { background: #fee2e2; color: #991b1b; }
+        .status.pending { background: #fef3c7; color: #92400e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Complete Admin System Test</h1>
+        <p>This test will verify your entire admin system is working properly.</p>
+
+        <div class="test-section">
+            <h2>🔐 Step 1: Admin Login Test</h2>
+            <p>Login as admin to get authentication token</p>
+            <button onclick="testLogin()">Test Admin Login</button>
+            <div id="login-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📊 Step 2: Dashboard Stats Test</h2>
+            <p>Test if admin dashboard statistics are loading</p>
+            <button onclick="testStats()">Test Dashboard Stats</button>
+            <div id="stats-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>👥 Step 3: User Management Test</h2>
+            <p>Test job seekers and employers management</p>
+            <button onclick="testJobSeekers()">Test Job Seekers</button>
+            <button onclick="testEmployers()">Test Employers</button>
+            <div id="users-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>💼 Step 4: Job Management Test</h2>
+            <p>Test job posting approval system</p>
+            <button onclick="testJobs()">Test Jobs</button>
+            <div id="jobs-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>📋 Step 5: Application Management Test</h2>
+            <p>Test application tracking and status management</p>
+            <button onclick="testApplications()">Test Applications</button>
+            <div id="apps-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎯 Step 6: Complete System Check</h2>
+            <p>Run all tests automatically</p>
+            <button onclick="runAllTests()">Run Complete Test Suite</button>
+            <div id="complete-result"></div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔧 Troubleshooting</h2>
+            <p>If tests fail, try these solutions:</p>
+            <ol>
+                <li>Clear browser cache and localStorage</li>
+                <li>Make sure both servers are running</li>
+                <li>Check browser console for errors</li>
+                <li>Verify admin credentials are correct</li>
+            </ol>
+            <button onclick="clearStorage()">Clear Browser Storage</button>
+            <button onclick="checkServers()">Check Server Status</button>
+        </div>
+    </div>
+
+    <script>
+        let authToken = null;
+
+        async function makeRequest(endpoint, method = 'GET', data = null) {
+            const headers = {
+                'Accept': 'application/json'
+            };
+
+            if (authToken) {
+                headers['Authorization'] = `Bearer ${authToken}`;
+            }
+
+            const config = { method, headers };
+
+            if (data && method !== 'GET') {
+                headers['Content-Type'] = 'application/json';
+                config.body = JSON.stringify(data);
+            }
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api${endpoint}`, config);
+                const result = await response.json();
+                return { success: response.ok, status: response.status, data: result };
+            } catch (error) {
+                return { success: false, error: error.message };
+            }
+        }
+
+        async function testLogin() {
+            const resultDiv = document.getElementById('login-result');
+            resultDiv.innerHTML = '<div class="info">🔄 Testing admin login...</div>';
+
+            const result = await makeRequest('/login', 'POST', {
+                email: 'admin@jobportal.com',
+                password: 'Admin123!'
+            });
+
+            if (result.success && result.data.access_token) {
+                authToken = result.data.access_token;
+                localStorage.setItem('access_token', authToken);
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Admin login successful!</div>
+                    <div class="result">Token: ${authToken.substring(0, 20)}...</div>
+                    <div class="result">User: ${result.data.user?.name || 'Admin'}</div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Admin login failed!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testStats() {
+            const resultDiv = document.getElementById('stats-result');
+            resultDiv.innerHTML = '<div class="info">🔄 Loading dashboard statistics...</div>';
+
+            const result = await makeRequest('/admin/stats');
+
+            if (result.success) {
+                const stats = result.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Dashboard stats loaded successfully!</div>
+                    <div class="result">
+📊 System Statistics:
+• Total Users: ${stats.totalUsers || 0}
+• Job Seekers: ${stats.totalJobSeekers || 0}
+• Employers: ${stats.totalEmployers || 0}
+• Active Jobs: ${stats.activeJobs || 0}
+• Pending Jobs: ${stats.pendingJobs || 0}
+• Applications: ${stats.totalApplications || 0}
+• User Growth: ${stats.userGrowth || 0}%
+• Job Growth: ${stats.jobGrowth || 0}%
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Failed to load dashboard stats!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testJobSeekers() {
+            const resultDiv = document.getElementById('users-result');
+            resultDiv.innerHTML = '<div class="info">🔄 Loading job seekers...</div>';
+
+            const result = await makeRequest('/admin/jobseekers');
+
+            if (result.success && result.data?.data) {
+                const seekers = result.data.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Job seekers loaded: ${seekers.length} found</div>
+                    <div class="result">
+👥 Job Seekers Sample:
+${seekers.slice(0, 3).map(s => `• ${s.name} (${s.email}) - ${s.is_verified ? 'Verified' : 'Not Verified'}`).join('\n')}
+${seekers.length > 3 ? `... and ${seekers.length - 3} more` : ''}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Failed to load job seekers!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testEmployers() {
+            const resultDiv = document.getElementById('users-result');
+            const currentContent = resultDiv.innerHTML;
+            resultDiv.innerHTML = currentContent + '<div class="info">🔄 Loading employers...</div>';
+
+            const result = await makeRequest('/admin/employers');
+
+            if (result.success && result.data?.data) {
+                const employers = result.data.data;
+                resultDiv.innerHTML = currentContent + `
+                    <div class="success">✅ Employers loaded: ${employers.length} found</div>
+                    <div class="result">
+🏢 Employers Sample:
+${employers.slice(0, 3).map(e => `• ${e.name} (${e.companyName || 'No Company'}) - ${e.is_verified ? 'Verified' : 'Not Verified'}`).join('\n')}
+${employers.length > 3 ? `... and ${employers.length - 3} more` : ''}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = currentContent + `
+                    <div class="error">❌ Failed to load employers!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testJobs() {
+            const resultDiv = document.getElementById('jobs-result');
+            resultDiv.innerHTML = '<div class="info">🔄 Loading jobs...</div>';
+
+            const result = await makeRequest('/admin/jobs');
+
+            if (result.success && result.data?.data) {
+                const jobs = result.data.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Jobs loaded: ${jobs.length} found</div>
+                    <div class="result">
+💼 Jobs Sample:
+${jobs.slice(0, 3).map(j => `• ${j.title} (${j.location}) - ${j.is_approved ? 'Approved' : 'Pending'} - ${j.employer?.name || 'Unknown'}`).join('\n')}
+${jobs.length > 3 ? `... and ${jobs.length - 3} more` : ''}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Failed to load jobs!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function testApplications() {
+            const resultDiv = document.getElementById('apps-result');
+            resultDiv.innerHTML = '<div class="info">🔄 Loading applications...</div>';
+
+            const result = await makeRequest('/admin/applications');
+
+            if (result.success && result.data?.data) {
+                const applications = result.data.data;
+                resultDiv.innerHTML = `
+                    <div class="success">✅ Applications loaded: ${applications.length} found</div>
+                    <div class="result">
+📋 Applications Sample:
+${applications.slice(0, 3).map(a => `• ${a.user?.name || 'Unknown'} → ${a.job?.title || 'Unknown Job'} (${a.status})`).join('\n')}
+${applications.length > 3 ? `... and ${applications.length - 3} more` : ''}
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Failed to load applications!</div>
+                    <div class="result">${JSON.stringify(result.data || result.error, null, 2)}</div>
+                `;
+            }
+        }
+
+        async function runAllTests() {
+            const resultDiv = document.getElementById('complete-result');
+            resultDiv.innerHTML = '<div class="info">🚀 Running complete test suite...</div>';
+
+            // Test login first
+            await testLogin();
+
+            if (!authToken) {
+                resultDiv.innerHTML = '<div class="error">❌ Cannot proceed: Admin login failed!</div>';
+                return;
+            }
+
+            // Run all other tests
+            await Promise.all([
+                testStats(),
+                testJobSeekers(),
+                testEmployers(),
+                testJobs(),
+                testApplications()
+            ]);
+
+            resultDiv.innerHTML = `
+                <div class="success">✅ Complete test suite finished!</div>
+                <div class="result">
+🎉 If all tests above show SUCCESS, your admin system is working perfectly!
+
+📊 Expected Results:
+• Dashboard: 34 users, 77 jobs, 5 applications
+• Job Seekers: 26 users with verification status
+• Employers: 8 companies with verification status
+• Jobs: 77 job postings with approval status
+• Applications: 5 applications with status tracking
+
+🔧 If any test failed, check:
+1. Both servers are running
+2. Admin credentials are correct
+3. Browser cache is cleared
+4. No CORS issues in browser console
+                </div>
+            `;
+        }
+
+        function clearStorage() {
+            localStorage.clear();
+            sessionStorage.clear();
+            authToken = null;
+            alert('Browser storage cleared! Please refresh the page and login again.');
+        }
+
+        async function checkServers() {
+            const resultDiv = document.getElementById('complete-result');
+
+            try {
+                const backendResponse = await fetch('http://127.0.0.1:8000/api/test-auth');
+                const backendStatus = backendResponse.ok ? '✅ Running' : '❌ Not responding';
+
+                resultDiv.innerHTML = `
+                    <div class="info">🔍 Server Status Check:</div>
+                    <div class="result">
+Backend (http://127.0.0.1:8000): ${backendStatus}
+Frontend (http://localhost:3000): Check if Vite is running
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="error">❌ Server check failed!</div>
+                    <div class="result">Error: ${error.message}</div>
+                `;
+            }
+        }
+
+        // Auto-load token if exists
+        window.onload = function() {
+            const savedToken = localStorage.getItem('access_token');
+            if (savedToken) {
+                authToken = savedToken;
+                document.getElementById('login-result').innerHTML =
+                    '<div class="success">✅ Token found in localStorage</div>';
+            }
+        };
+    </script>
+</body>
+</html>

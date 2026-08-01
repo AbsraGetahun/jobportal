@@ -1,0 +1,636 @@
+/* Account Verification Styles */
+.account-verification {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.job-seeker-account.dark .account-verification {
+    background: #1e293b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    border: 1px solid #334155;
+}
+
+.verification-header {
+    margin-bottom: 1.5rem;
+}
+
+.verification-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .verification-header h3 {
+    color: #f8fafc;
+}
+
+.verification-subtitle {
+    color: #64748b;
+    margin: 0;
+}
+
+.job-seeker-account.dark .verification-subtitle {
+    color: #94a3b8;
+}
+
+.verification-status {
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid #bae6fd;
+}
+
+.job-seeker-account.dark .verification-status {
+    background: #0c4a6e;
+    border-color: #0369a1;
+}
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.status-header h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: #0c4a6e;
+}
+
+.job-seeker-account.dark .status-header h4 {
+    color: #f8fafc;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.status-indicator.verified {
+    background: #dcfce7;
+    color: #10b981;
+}
+
+.status-indicator.pending {
+    background: #fffbeb;
+    color: #f59e0b;
+}
+
+.status-indicator.submitted {
+    background: #dbeafe;
+    color: #3b82f6;
+}
+
+.status-indicator.rejected {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.job-seeker-account.dark .status-indicator.verified {
+    background: #065f46;
+    color: #10b981;
+}
+
+.job-seeker-account.dark .status-indicator.pending {
+    background: #78350f;
+    color: #f59e0b;
+}
+
+.job-seeker-account.dark .status-indicator.submitted {
+    background: #1e3a8a;
+    color: #60a5fa;
+}
+
+.job-seeker-account.dark .status-indicator.rejected {
+    background: #7f1d1d;
+    color: #f87171;
+}
+
+.verification-progress {
+    margin-top: 1rem;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.job-seeker-account.dark .progress-bar {
+    background: #475569;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.job-seeker-account.dark .progress-fill {
+    background: #2563eb;
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e2e8f0;
+    z-index: 1;
+}
+
+.job-seeker-account.dark .progress-steps::before {
+    background: #475569;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+    width: 80px;
+}
+
+.step.completed i {
+    color: #10b981;
+}
+
+.step i {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    border: 2px solid #cbd5e1;
+    color: #94a3b8;
+}
+
+.job-seeker-account.dark .step i {
+    background: #1e293b;
+    border-color: #475569;
+    color: #64748b;
+}
+
+.step.completed i {
+    background: #10b981;
+    border-color: #10b981;
+    color: white;
+}
+
+.step span {
+    font-size: 0.75rem;
+    text-align: center;
+    color: #64748b;
+}
+
+.job-seeker-account.dark .step span {
+    color: #94a3b8;
+}
+
+.step.completed span {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.verification-levels {
+    margin-bottom: 2rem;
+}
+
+.verification-levels h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .verification-levels h4 {
+    color: #f8fafc;
+}
+
+.levels-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.level-card {
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.job-seeker-account.dark .level-card {
+    background: #334155;
+    border-color: #475569;
+}
+
+.level-card.completed {
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.3);
+}
+
+.level-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.level-header h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .level-header h5 {
+    color: #f8fafc;
+}
+
+.completed-icon {
+    color: #10b981;
+    font-size: 1.25rem;
+}
+
+.level-description {
+    color: #64748b;
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+}
+
+.job-seeker-account.dark .level-description {
+    color: #94a3b8;
+}
+
+.level-benefits {
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+}
+
+.level-benefits li {
+    list-style: none;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: #1e293b;
+    font-size: 0.9rem;
+}
+
+.job-seeker-account.dark .level-benefits li {
+    color: #f8fafc;
+}
+
+.level-benefits li:last-child {
+    margin-bottom: 0;
+}
+
+.level-benefits li i {
+    color: #10b981;
+    margin-top: 0.25rem;
+}
+
+.upgrade-btn {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.upgrade-btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.document-verification {
+    margin-bottom: 2rem;
+}
+
+.document-verification h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .document-verification h4 {
+    color: #f8fafc;
+}
+
+.document-subtitle {
+    color: #64748b;
+    margin: 0 0 1.5rem 0;
+}
+
+.job-seeker-account.dark .document-subtitle {
+    color: #94a3b8;
+}
+
+.documents-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.document-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fafc;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.job-seeker-account.dark .document-card {
+    background: #334155;
+    border-color: #475569;
+}
+
+.document-info h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .document-info h5 {
+    color: #f8fafc;
+}
+
+.document-info p {
+    color: #64748b;
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+.job-seeker-account.dark .document-info p {
+    color: #94a3b8;
+}
+
+.document-date {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0 !important;
+}
+
+.job-seeker-account.dark .document-date {
+    color: #64748b;
+}
+
+.document-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.status-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.status-badge.verified {
+    background: #dcfce7;
+    color: #10b981;
+}
+
+.status-badge.pending {
+    background: #fffbeb;
+    color: #f59e0b;
+}
+
+.status-badge.submitted {
+    background: #dbeafe;
+    color: #3b82f6;
+}
+
+.status-badge.rejected {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.job-seeker-account.dark .status-badge.verified {
+    background: #065f46;
+    color: #10b981;
+}
+
+.job-seeker-account.dark .status-badge.pending {
+    background: #78350f;
+    color: #f59e0b;
+}
+
+.job-seeker-account.dark .status-badge.submitted {
+    background: #1e3a8a;
+    color: #60a5fa;
+}
+
+.job-seeker-account.dark .status-badge.rejected {
+    background: #7f1d1d;
+    color: #f87171;
+}
+
+.status-badge i.verified {
+    color: #10b981;
+}
+
+.status-badge i.pending {
+    color: #f59e0b;
+}
+
+.status-badge i.submitted {
+    color: #3b82f6;
+}
+
+.status-badge i.rejected {
+    color: #ef4444;
+}
+
+.upload-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.upload-btn:hover:not(:disabled) {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.upload-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.upload-progress {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #f0f9ff;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.job-seeker-account.dark .upload-progress {
+    background: #0c4a6e;
+}
+
+.upload-progress p {
+    margin: 0 0 0.5rem 0;
+    color: #0c4a6e;
+    font-weight: 500;
+}
+
+.job-seeker-account.dark .upload-progress p {
+    color: #f8fafc;
+}
+
+.upload-progress .progress-bar {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.job-seeker-account.dark .upload-progress .progress-bar {
+    background: #475569;
+}
+
+.upload-progress span {
+    font-size: 0.9rem;
+    color: #0c4a6e;
+    font-weight: 600;
+}
+
+.job-seeker-account.dark .upload-progress span {
+    color: #f8fafc;
+}
+
+.verification-benefits {
+    margin-bottom: 1rem;
+}
+
+.verification-benefits h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    color: #1e293b;
+    text-align: center;
+}
+
+.job-seeker-account.dark .verification-benefits h4 {
+    color: #f8fafc;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.benefit-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.job-seeker-account.dark .benefit-item {
+    background: #334155;
+    border-color: #475569;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.job-seeker-account.dark .benefit-item:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+}
+
+.benefit-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #3b82f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin: 0 auto 1rem;
+}
+
+.job-seeker-account.dark .benefit-icon {
+    background: #1e3a8a;
+    color: #60a5fa;
+}
+
+.benefit-item h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .benefit-item h5 {
+    color: #f8fafc;
+}
+
+.benefit-item p {
+    color: #64748b;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.job-seeker-account.dark .benefit-item p {
+    color: #94a3b8;
+}

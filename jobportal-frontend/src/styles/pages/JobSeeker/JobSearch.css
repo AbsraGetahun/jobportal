@@ -1,0 +1,1137 @@
+:root {
+    --jobsearch-bg-light: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+    --jobsearch-bg-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --jobsearch-header-bg-light: rgba(255,255,255,0.85);
+    --jobsearch-header-bg-dark: rgba(15,23,42,0.92);
+    --jobsearch-header-blur: 16px;
+    --jobsearch-header-border-light: rgba(59,130,246,0.10);
+    --jobsearch-header-border-dark: rgba(59,130,246,0.22);
+    --jobsearch-footer-bg-light: rgba(255,255,255,0.92);
+    --jobsearch-footer-bg-dark: rgba(15,23,42,0.97);
+    --jobsearch-footer-border-light: rgba(59,130,246,0.10);
+    --jobsearch-footer-border-dark: rgba(59,130,246,0.22);
+    --jobsearch-shadow: 0 8px 32px rgba(37,99,235,0.10), 0 1.5px 8px rgba(0,0,0,0.10);
+    --jobsearch-title-light: #1e293b;
+    --jobsearch-title-dark: #f8fafc;
+    --jobsearch-subtitle-light: #64748b;
+    --jobsearch-subtitle-dark: #cbd5e1;
+    --jobsearch-link: #3b82f6;
+    --jobsearch-link-hover: #2563eb;
+    --jobsearch-icon: #2563eb;
+    --jobsearch-icon-hover: #3b82f6;
+    --jobsearch-border-radius: 1.5rem;
+}
+
+.careerplus-jobsearch-root {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--jobsearch-bg-light);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+.careerplus-jobsearch-root.dark {
+    background: var(--jobsearch-bg-dark);
+}
+
+.careerplus__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(var(--jobsearch-header-blur));
+    backdrop-filter: blur(var(--jobsearch-header-blur));
+    border-bottom: 1.5px solid var(--jobsearch-header-border-light);
+    background: var(--jobsearch-header-bg-light);
+    transition: all 0.3s;
+    box-shadow: 0 2px 12px 0 rgba(37,99,235,0.04);
+}
+.careerplus-jobsearch-root.dark .careerplus__header {
+    background: var(--jobsearch-header-bg-dark);
+    border-bottom: 1.5px solid var(--jobsearch-header-border-dark);
+}
+.careerplus__header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.careerplus__logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--jobsearch-title-light);
+    letter-spacing: -1px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.careerplus-jobsearch-root.dark .careerplus__logo {
+    color: var(--jobsearch-title-dark);
+}
+.careerplus__nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+.careerplus__nav-icon {
+    background: none;
+    border: none;
+    color: var(--jobsearch-icon);
+    font-size: 1.45rem;
+    cursor: pointer;
+    padding: 0.45rem;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    outline: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.careerplus__nav-icon:hover, .careerplus__nav-icon:focus {
+    background: rgba(59,130,246,0.10);
+    color: var(--jobsearch-icon-hover);
+    box-shadow: 0 2px 8px 0 rgba(37,99,235,0.10);
+}
+.careerplus-jobsearch-root.dark .careerplus__nav-icon {
+    color: #60a5fa;
+    background: none;
+}
+.careerplus-jobsearch-root.dark .careerplus__nav-icon:hover, .careerplus-jobsearch-root.dark .careerplus__nav-icon:focus {
+    background: rgba(59,130,246,0.18);
+    color: #fff;
+}
+.careerplus__theme-toggle {
+    background: none;
+    border: none;
+    color: var(--jobsearch-icon);
+    font-size: 1.45rem;
+    cursor: pointer;
+    padding: 0.45rem;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.careerplus__theme-toggle:hover, .careerplus__theme-toggle:focus {
+    background: rgba(59,130,246,0.10);
+    color: var(--jobsearch-icon-hover);
+}
+.careerplus-jobsearch-root.dark .careerplus__theme-toggle {
+    color: #60a5fa;
+}
+.careerplus-jobsearch-root.dark .careerplus__theme-toggle:hover, .careerplus-jobsearch-root.dark .careerplus__theme-toggle:focus {
+    background: rgba(59,130,246,0.18);
+    color: #fff;
+}
+
+.careerplus-jobsearch-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    min-height: 80vh;
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    margin-top: 6.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer Styles */
+.careerplus__footer {
+    background: var(--jobsearch-footer-bg-light);
+    border-top: 1.5px solid var(--jobsearch-footer-border-light);
+    box-shadow: 0 -2px 12px 0 rgba(37,99,235,0.04);
+    padding: 2.5rem 0 1.2rem 0;
+    margin-top: 2rem;
+    transition: background 0.3s, border-color 0.3s;
+}
+.careerplus-jobsearch-root.dark .careerplus__footer {
+    background: var(--jobsearch-footer-bg-dark);
+    border-top: 1.5px solid var(--jobsearch-footer-border-dark);
+}
+.careerplus__footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2.5rem;
+    padding: 0 2rem;
+}
+.careerplus__footer-brand {
+    flex: 1 1 220px;
+}
+.careerplus__footer-links, .careerplus__footer-contact, .careerplus__footer-social {
+    flex: 1 1 180px;
+}
+.careerplus__footer-heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.7rem;
+    color: var(--jobsearch-title-light);
+}
+.careerplus-jobsearch-root.dark .careerplus__footer-heading {
+    color: var(--jobsearch-title-dark);
+}
+.careerplus__footer-link {
+    display: block;
+    color: var(--jobsearch-link);
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.careerplus__footer-link:hover, .careerplus__footer-link:focus {
+    color: var(--jobsearch-link-hover);
+    text-decoration: underline;
+}
+.careerplus__footer-text {
+    color: var(--jobsearch-subtitle-light);
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+.careerplus-jobsearch-root.dark .careerplus__footer-text {
+    color: var(--jobsearch-subtitle-dark);
+}
+.careerplus__footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+.careerplus__social-icons {
+    display: flex;
+    gap: 1.1rem;
+    margin-top: 0.2rem;
+}
+.careerplus__social-icon {
+    color: var(--jobsearch-link);
+    font-size: 1.35rem;
+    transition: color 0.2s;
+}
+.careerplus__social-icon:hover, .careerplus__social-icon:focus {
+    color: var(--jobsearch-link-hover);
+}
+.careerplus-jobsearch-root.dark .careerplus__social-icon {
+    color: #60a5fa;
+}
+.careerplus-jobsearch-root.dark .careerplus__social-icon:hover, .careerplus-jobsearch-root.dark .careerplus__social-icon:focus {
+    color: #fff;
+}
+.careerplus__footer-bottom {
+    text-align: center;
+    color: var(--jobsearch-subtitle-light);
+    font-size: 0.98rem;
+    margin-top: 2.2rem;
+}
+.careerplus-jobsearch-root.dark .careerplus__footer-bottom {
+    color: var(--jobsearch-subtitle-dark);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .careerplus__header-container, .careerplus__footer-container {
+        padding: 1rem 1rem;
+    }
+    .careerplus__footer-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+}
+@media (max-width: 600px) {
+    .careerplus__header-container, .careerplus__footer-container {
+        padding: 0.7rem 0.5rem;
+    }
+    .careerplus-jobsearch-main {
+        padding: 1.2rem 0.2rem 1rem 0.2rem;
+        margin-top: 5.2rem;
+    }
+    .careerplus__logo {
+        font-size: 1.1rem;
+    }
+}
+
+/* Search Section Styles */
+.search-container {
+    background: var(--jobsearch-header-bg-light);
+    padding: 2rem;
+    border-radius: var(--jobsearch-border-radius);
+    box-shadow: var(--jobsearch-shadow);
+    margin-bottom: 2rem;
+    border: 1px solid var(--jobsearch-header-border-light);
+    backdrop-filter: blur(var(--jobsearch-header-blur));
+}
+
+.search-container h1 {
+    color: var(--jobsearch-title-light);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.search-bar {
+    display: flex;
+    gap: 1rem;
+    max-width: 800px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: 1.5px solid var(--jobsearch-header-border-light);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--jobsearch-link);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-button {
+    padding: 1rem 2rem;
+    background: var(--jobsearch-link);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-button:hover {
+    background: var(--jobsearch-link-hover);
+    transform: translateY(-1px);
+}
+
+/* Job Cards Styles */
+.job-listings {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.job-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    width: 100%;
+}
+
+.job-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.15);
+}
+
+.job-card-header {
+    margin-bottom: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.job-card-header h2 {
+    color: var(--jobsearch-title-light);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    flex: 1;
+}
+
+.job-card-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.save-job-btn {
+    background: none;
+    border: none;
+    color: #6b7280;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.save-job-btn:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--jobsearch-link);
+}
+
+.save-job-btn.saved {
+    color: #ef4444;
+}
+
+.save-job-btn.saved:hover {
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.save-job-btn .filled {
+    color: #ef4444;
+    fill: currentColor;
+}
+
+.save-job-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Dark mode styles for save button */
+.careerplus-jobsearch-root.dark .save-job-btn {
+    color: #9ca3af;
+}
+
+.careerplus-jobsearch-root.dark .save-job-btn:hover {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+.careerplus-jobsearch-root.dark .save-job-btn.saved {
+    color: #f87171;
+}
+
+.careerplus-jobsearch-root.dark .save-job-btn.saved:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.company-name {
+    color: var(--jobsearch-link);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.job-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.job-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.info-label {
+    color: var(--jobsearch-subtitle-light);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.info-item span:not(.info-label) {
+    color: var(--jobsearch-title-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.category-tag {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--jobsearch-link) !important;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.85rem !important;
+    display: inline-block;
+}
+
+.details-button {
+    background: transparent;
+    border: 2px solid var(--jobsearch-link);
+    color: var(--jobsearch-link);
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.details-button:hover {
+    background: var(--jobsearch-link);
+    color: white;
+}
+
+/* Job Details Modal Styles */
+.job-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.job-details-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--jobsearch-header-bg-light);
+    border-radius: var(--jobsearch-border-radius);
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--jobsearch-shadow);
+    border: 1px solid var(--jobsearch-header-border-light);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.modal-title-section {
+    flex: 1;
+}
+
+.modal-actions-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--jobsearch-subtitle-light);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+.close-button:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--jobsearch-title-light);
+}
+
+.modal-content h2 {
+    color: var(--jobsearch-title-light);
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.modal-content h3 {
+    color: var(--jobsearch-link);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.detail-section {
+    background: rgba(59, 130, 246, 0.05);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: var(--jobsearch-subtitle-light);
+    font-weight: 500;
+}
+
+.description-section {
+    margin-bottom: 2rem;
+}
+
+.description-section h4 {
+    color: var(--jobsearch-title-light);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.description-section p {
+    color: var(--jobsearch-subtitle-light);
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+.apply-button, .cancel-button {
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-button {
+    background: var(--jobsearch-link);
+    color: white;
+    border: none;
+}
+
+.apply-button:hover {
+    background: var(--jobsearch-link-hover);
+    transform: translateY(-1px);
+}
+
+.cancel-button {
+    background: transparent;
+    border: 2px solid var(--jobsearch-subtitle-light);
+    color: var(--jobsearch-subtitle-light);
+}
+
+.cancel-button:hover {
+    border-color: var(--jobsearch-title-light);
+    color: var(--jobsearch-title-light);
+}
+
+/* Dark Mode Styles */
+.careerplus-jobsearch-root.dark .search-container,
+.careerplus-jobsearch-root.dark .job-card,
+.careerplus-jobsearch-root.dark .modal-content {
+    background: var(--jobsearch-header-bg-dark);
+    border-color: var(--jobsearch-header-border-dark);
+}
+
+.careerplus-jobsearch-root.dark .search-container h1,
+.careerplus-jobsearch-root.dark .job-card-header h2,
+.careerplus-jobsearch-root.dark .modal-content h2 {
+    color: var(--jobsearch-title-dark);
+}
+
+.careerplus-jobsearch-root.dark .search-bar input {
+    background: rgba(15, 23, 42, 0.8);
+    border-color: var(--jobsearch-header-border-dark);
+    color: var(--jobsearch-title-dark);
+}
+
+.careerplus-jobsearch-root.dark .info-label,
+.careerplus-jobsearch-root.dark .description-section p {
+    color: var(--jobsearch-subtitle-dark);
+}
+
+.careerplus-jobsearch-root.dark .info-item span:not(.info-label),
+.careerplus-jobsearch-root.dark .modal-content h3,
+.careerplus-jobsearch-root.dark .description-section h4 {
+    color: var(--jobsearch-title-dark);
+}
+
+.careerplus-jobsearch-root.dark .detail-section {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.careerplus-jobsearch-root.dark .detail-row {
+    border-bottom-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Dark Mode Styles for Job Details */
+.careerplus-jobsearch-root.dark .modal-content {
+    background-color: #1e293b;
+}
+
+.careerplus-jobsearch-root.dark .modal-content h2 {
+    color: #fff;
+}
+
+.careerplus-jobsearch-root.dark .modal-content h3 {
+    color: #e2e8f0;
+}
+
+.careerplus-jobsearch-root.dark .detail-section {
+    background-color: #0f172a;
+    border-color: #334155;
+}
+
+.careerplus-jobsearch-root.dark .detail-row {
+    border-color: #334155;
+}
+
+.careerplus-jobsearch-root.dark .detail-label {
+    color: #94a3b8;
+}
+
+.careerplus-jobsearch-root.dark .detail-row span:not(.detail-label) {
+    color: #e2e8f0;
+}
+
+.careerplus-jobsearch-root.dark .description-section {
+    background-color: #0f172a;
+    border-color: #334155;
+}
+
+.careerplus-jobsearch-root.dark .description-section h4 {
+    color: #fff;
+}
+
+.careerplus-jobsearch-root.dark .description-section p {
+    color: #e2e8f0;
+}
+
+.careerplus-jobsearch-root.dark .close-button {
+    color: #94a3b8;
+}
+
+.careerplus-jobsearch-root.dark .close-button:hover {
+    color: #fff;
+    background-color: #334155;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .job-listings {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .job-listings {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-bar {
+        flex-direction: column;
+    }
+    
+    .search-bar input {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .search-button {
+        border-radius: 5px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .detail-label {
+        width: 100%;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+
+    .modal-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .modal-actions-top {
+        align-self: flex-end;
+    }
+}
+
+/* Base Styles */
+.job-search-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: #333;
+    width: 100%;
+}
+
+/* Search Container */
+.search-container {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.search-container h1 {
+    color: #2563eb;
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+
+.search-bar {
+    display: flex;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px 0 0 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.search-bar input:focus {
+    border-color: #2563eb;
+}
+
+.search-button {
+    padding: 12px 20px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #1d4ed8;
+}
+
+/* Job Listings */
+.job-listings {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    padding: 0.5rem;
+}
+
+.job-card {
+    background: var(--jobsearch-header-bg-light);
+    border-radius: var(--jobsearch-border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--jobsearch-shadow);
+    border: 1px solid var(--jobsearch-header-border-light);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(37, 99, 235, 0.15);
+}
+
+.job-card-header {
+    margin-bottom: 1.2rem;
+}
+
+.job-card-header h2 {
+    color: var(--jobsearch-title-light);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.company-name {
+    color: var(--jobsearch-link);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.job-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.job-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.category-tag {
+    display: inline-block;
+    padding: 3px 8px;
+    background-color: #dbeafe;
+    color: #1e40af;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.details-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.details-button:hover {
+    background-color: #1d4ed8;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #6b7280;
+}
+
+/* Job Details Modal */
+.job-details-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+}
+
+.job-details-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+}
+
+.job-details-modal.open .modal-content {
+    transform: translateY(0);
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6b7280;
+    transition: color 0.3s;
+}
+
+.close-button:hover {
+    color: #1f2937;
+}
+
+.modal-content h2 {
+    color: #1e40af;
+    margin-bottom: 5px;
+}
+
+.modal-content h3 {
+    color: #4b5563;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.detail-section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+}
+
+.detail-row {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    font-weight: 600;
+    width: 180px;
+    color: #4b5563;
+}
+
+.description-section {
+    margin: 25px 0;
+}
+
+.description-section h4 {
+    color: #1e40af;
+    margin-bottom: 10px;
+}
+
+.description-section p {
+    line-height: 1.6;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.apply-button {
+    flex: 1;
+    padding: 12px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.apply-button:hover {
+    background-color: #1d4ed8;
+}
+
+.cancel-button {
+    flex: 1;
+    padding: 12px;
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.cancel-button:hover {
+    background-color: #e5e7eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .job-listings {
+        grid-template-columns: 1fr;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .search-bar input {
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .search-button {
+        border-radius: 5px;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .detail-label {
+        width: 100%;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+    }
+}

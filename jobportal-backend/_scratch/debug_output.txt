@@ -1,0 +1,54 @@
+<h1>Job Portal Debug Information</h1>
+<p style='color: green;'>✓ Database connection successful</p>
+<p>Total users in system: 19</p>
+<p>Total jobs in system: 65</p>
+<p>Active jobs (should appear in search): 65</p>
+<h2>Recent Jobs:</h2>
+<table border='1'>
+<tr><th>ID</th><th>Title</th><th>Active</th><th>Employer ID</th><th>Created At</th></tr>
+<tr><td>66</td><td>Senior Software Engineer</td><td>Yes</td><td>19</td><td>2025-08-22 07:16:17</td></tr>
+<tr><td>65</td><td>HR Specialist</td><td>Yes</td><td>1</td><td>2025-08-22 07:16:17</td></tr>
+<tr><td>64</td><td>Data Analyst</td><td>Yes</td><td>19</td><td>2025-08-22 07:15:45</td></tr>
+<tr><td>63</td><td>HR Specialist</td><td>Yes</td><td>1</td><td>2025-08-22 07:15:45</td></tr>
+<tr><td>62</td><td>Test Job - 2025-08-21 06:05:08</td><td>Yes</td><td>19</td><td>2025-08-21 06:05:08</td></tr>
+<tr><td>61</td><td>Test Job - 2025-08-21 06:05:08</td><td>Yes</td><td>1</td><td>2025-08-21 06:05:08</td></tr>
+<tr><td>59</td><td>Test Job - 2025-08-21 04:30:13</td><td>Yes</td><td>19</td><td>2025-08-21 04:30:13</td></tr>
+<tr><td>58</td><td>Test Job - 2025-08-21 04:30:13</td><td>Yes</td><td>1</td><td>2025-08-21 04:30:13</td></tr>
+<tr><td>57</td><td>Test Job - 2025-08-21 04:22:15</td><td>Yes</td><td>1</td><td>2025-08-21 04:22:15</td></tr>
+<tr><td>56</td><td>Test Job - 2025-08-21 04:05:08</td><td>Yes</td><td>1</td><td>2025-08-21 04:05:08</td></tr>
+</table>
+<h2>Test Job Creation:</h2>
+<p style='color: green;'>✓ Test job created successfully with ID: 67</p>
+<p style='color: green;'>✓ Test job can be retrieved</p>
+<p>Search results count: 66</p>
+<h2>Test Employer Jobs:</h2>
+<p>Jobs for employer ID 19: 7</p>
+<p>Jobs for employer ID 1: 23</p>
+<h2>Test myJobs Endpoint:</h2>
+<p>myJobs result for employer ID 19: 7 jobs</p>
+<p>Total jobs for employer ID 19: 7</p>
+<p>First job title: asistance</p>
+<p>First job ID: 49</p>
+<h2>Test Authentication:</h2>
+<p>User with ID 19 found: ketari aseri snshaw</p>
+<p>User email: ketari@gmail.com</p>
+<p>User type: Employer</p>
+<h2>Test localStorage Simulation:</h2>
+<p>Total users in system: 19</p>
+<p>Total employers in system: 5</p>
+<p>Employers with jobs:</p>
+<ul>
+<li>Test User (ID: 2) - 18 jobs</li>
+<li>user1 user9 user (ID: 17) - 1 jobs</li>
+<li>tinsu endalew admasu (ID: 18) - 7 jobs</li>
+<li>ketari aseri snshaw (ID: 19) - 7 jobs</li>
+</ul>
+<h2>Test Job Posting and Immediate Viewing:</h2>
+<p style='color: green;'>✓ Test job created successfully with ID: 68</p>
+<p>Jobs for employer ID 19 after posting: 8</p>
+<p>myJobs result for employer ID 19 after posting: 8 jobs</p>
+<p>Total jobs for employer ID 19 after posting: 8</p>
+<h2>Database Info:</h2>
+<p>Database file: </p>
+<p>File exists: No</p>
+<p>File size: N/A bytes</p>

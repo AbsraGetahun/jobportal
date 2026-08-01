@@ -1,0 +1,24 @@
+# Node modules
+frontend/node_modules/
+
+# Python
+backend/env/
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+/jobportal-backend/vendor/  
+/jobportal-backend/.env  
+/jobportal-backend/.env.*  
+/jobportal-backend/storage/  
+/jobportal-backend/bootstrap/cache/  
+/jobportal-backend/*.log  
+/jobportal-backend/.phpunit.result.cache  
+/jobportal-frontend/node_modules/  
+/jobportal-frontend/dist/  
+/jobportal-frontend/.env  
+.vscode/  
+.DS_Store  
+description.pdf 

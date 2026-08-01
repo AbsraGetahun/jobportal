@@ -1,0 +1,582 @@
+/* Account Settings Component Styles */
+.account-settings {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.employer-account.dark .account-settings {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.account-settings h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.employer-account.dark .account-settings h2 {
+    color: #f8fafc;
+}
+
+.settings-subtitle {
+    color: #64748b;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.employer-account.dark .settings-subtitle {
+    color: #cbd5e1;
+}
+
+/* Settings Sections */
+.settings-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.employer-account.dark .settings-section {
+    background: linear-gradient(135deg, #334155 0%, #1e293b 100%);
+    border-color: #475569;
+}
+
+.settings-section:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #6366f1;
+}
+
+.settings-section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.settings-section-icon {
+    font-size: 2rem;
+    color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
+
+.employer-account.dark .settings-section-icon {
+    background: rgba(99, 102, 241, 0.2);
+}
+
+.settings-section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.employer-account.dark .settings-section-title {
+    color: #f8fafc;
+}
+
+.settings-section-description {
+    color: #64748b;
+    margin: 0 0 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.employer-account.dark .settings-section-description {
+    color: #cbd5e1;
+}
+
+/* Notification Preferences */
+.notification-methods,
+.notification-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.notification-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.employer-account.dark .notification-item {
+    background: #334155;
+    border-color: #475569;
+}
+
+.notification-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #6366f1;
+}
+
+.notification-item.active {
+    border-color: #6366f1;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+}
+
+.employer-account.dark .notification-item.active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.notification-item-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    color: #6366f1;
+}
+
+.notification-item-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+.employer-account.dark .notification-item-title {
+    color: #f8fafc;
+}
+
+.notification-item-description {
+    color: #64748b;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.employer-account.dark .notification-item-description {
+    color: #cbd5e1;
+}
+
+/* Privacy Settings */
+.privacy-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.privacy-control-item {
+    background: white;
+    border-radius: 8px;
+    padding: 1.25rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.employer-account.dark .privacy-control-item {
+    background: #334155;
+    border-color: #475569;
+}
+
+.privacy-control-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #10b981;
+}
+
+.privacy-control-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.privacy-control-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0;
+}
+
+.employer-account.dark .privacy-control-title {
+    color: #f8fafc;
+}
+
+.privacy-toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.privacy-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.privacy-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.privacy-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .privacy-slider {
+    background-color: #10b981;
+}
+
+input:checked + .privacy-slider:before {
+    transform: translateX(26px);
+}
+
+.privacy-control-description {
+    color: #64748b;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.employer-account.dark .privacy-control-description {
+    color: #cbd5e1;
+}
+
+/* Company Profile Visibility */
+.profile-visibility-selector {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #0ea5e9;
+}
+
+.employer-account.dark .profile-visibility-selector {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #0ea5e9;
+}
+
+.visibility-options {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.visibility-option {
+    background: white;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.employer-account.dark .visibility-option {
+    background: #334155;
+    border-color: #475569;
+}
+
+.visibility-option:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.visibility-option.active {
+    border-color: #0ea5e9;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(2, 132, 199, 0.1) 100%);
+    color: #0ea5e9;
+    font-weight: 600;
+}
+
+.employer-account.dark .visibility-option.active {
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(2, 132, 199, 0.2) 100%);
+    color: #0ea5e9;
+}
+
+/* Account Preferences */
+.account-preferences {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.preference-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.employer-account.dark .preference-card {
+    background: #334155;
+    border-color: #475569;
+}
+
+.preference-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: #6366f1;
+}
+
+.preference-icon {
+    font-size: 2.5rem;
+    color: #6366f1;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.preference-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 0.75rem 0;
+}
+
+.employer-account.dark .preference-title {
+    color: #f8fafc;
+}
+
+.preference-description {
+    color: #64748b;
+    margin: 0 0 1.5rem 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.employer-account.dark .preference-description {
+    color: #cbd5e1;
+}
+
+.preference-btn {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.preference-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Save Buttons */
+.save-section {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.employer-account.dark .save-section {
+    border-color: #475569;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+}
+
+.save-btn:active {
+    transform: translateY(0);
+}
+
+/* Data Protection Notice */
+.data-protection-notice {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid #f59e0b;
+}
+
+.employer-account.dark .data-protection-notice {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border-color: #f59e0b;
+}
+
+.data-protection-notice p {
+    color: #92400e;
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.employer-account.dark .data-protection-notice p {
+    color: #fbbf24;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .notification-methods,
+    .notification-types,
+    .privacy-controls,
+    .account-preferences {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .account-settings {
+        padding: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .notification-methods,
+    .notification-types,
+    .privacy-controls,
+    .account-preferences {
+        grid-template-columns: 1fr;
+    }
+
+    .settings-section {
+        padding: 1.5rem;
+    }
+
+    .settings-section-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .settings-section-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .visibility-options {
+        flex-direction: column;
+    }
+
+    .account-settings {
+        padding: 1rem;
+    }
+
+    .account-settings h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-section {
+        padding: 1rem;
+    }
+
+    .notification-item,
+    .privacy-control-item,
+    .preference-card {
+        padding: 1rem;
+    }
+
+    .profile-visibility-selector {
+        padding: 1rem;
+    }
+
+    .save-btn {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .preference-btn {
+        padding: 0.625rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Animation for settings sections */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.settings-section {
+    animation: slideInUp 0.6s ease-out;
+}
+
+.settings-section:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.settings-section:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.settings-section:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+/* Hover effects for interactive elements */
+.notification-item:hover .notification-icon,
+.privacy-control-item:hover,
+.preference-card:hover .preference-icon {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}

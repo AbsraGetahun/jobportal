@@ -1,0 +1,1514 @@
+:root {
+    --employer-bg-light: linear-gradient(135deg, #e0f2fe 0%, #f0fdfa 100%);
+    --employer-bg-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --employer-card-bg-light: rgba(255, 255, 255, 0.95);
+    --employer-card-bg-dark: rgba(30, 41, 59, 0.95);
+    --employer-primary: #0369a1;
+    --employer-primary-hover: #075985;
+    --employer-secondary: #0d9488;
+    --employer-danger: #dc2626;
+    --employer-danger-hover: #b91c1c;
+    --employer-success: #16a34a;
+    --employer-success-hover: #15803d;
+    --employer-text-light: #1e293b;
+    --employer-text-dark: #f8fafc;
+    --employer-text-secondary-light: #64748b;
+    --employer-text-secondary-dark: #94a3b8;
+    --employer-border-light: #e2e8f0;
+    --employer-border-dark: #334155;
+    --employer-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --employer-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --employer-border-radius: 1rem;
+    --jobsearch-bg-light: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+    --jobsearch-bg-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --jobsearch-header-bg-light: rgba(255, 255, 255, 0.85);
+    --jobsearch-header-bg-dark: rgba(15, 23, 42, 0.92);
+    --jobsearch-header-blur: 16px;
+    --jobsearch-header-border-light: rgba(59, 130, 246, 0.10);
+    --jobsearch-header-border-dark: rgba(59, 130, 246, 0.22);
+    --jobsearch-footer-bg-light: rgba(255, 255, 255, 0.92);
+    --jobsearch-footer-bg-dark: rgba(15, 23, 42, 0.97);
+    --jobsearch-footer-border-light: rgba(59, 130, 246, 0.10);
+    --jobsearch-footer-border-dark: rgba(59, 130, 246, 0.22);
+    --jobsearch-shadow: 0 8px 32px rgba(37, 99, 235, 0.10), 0 1.5px 8px rgba(0, 0, 0, 0.10);
+    --jobsearch-title-light: #1e293b;
+    --jobsearch-title-dark: #f8fafc;
+    --jobsearch-subtitle-light: #64748b;
+    --jobsearch-subtitle-dark: #cbd5e1;
+    --jobsearch-link: #3b82f6;
+    --jobsearch-link-hover: #2563eb;
+    --jobsearch-icon: #2563eb;
+    --jobsearch-icon-hover: #3b82f6;
+    --jobsearch-border-radius: 1.5rem;
+}
+
+.job-seeker-account {
+    min-height: 100vh;
+    width: 100%;
+    background: var(--jobsearch-bg-light);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.job-seeker-account.dark {
+    background: var(--jobsearch-bg-dark);
+}
+
+/* Loading Spinner Styles */
+.loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--employer-border-light);
+    border-top: 5px solid var(--employer-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.job-seeker-account.dark .spinner {
+    border: 5px solid var(--employer-border-dark);
+    border-top: 5px solid var(--employer-secondary);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Screen reader only text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Main content wrapper */
+.account-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    padding: 2rem;
+    flex: 1;
+    margin-top: 150px;
+    /* Add space for fixed header */
+}
+
+/* Sidebar Navigation */
+.account-sidebar {
+    width: 280px;
+    background: white;
+    color: black;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: calc(100vh - 4rem);
+    position: sticky;
+    top: 2rem;
+    border-radius: var(--employer-border-radius);
+    box-shadow: var(--employer-shadow);
+}
+
+.job-seeker-account.dark .account-sidebar {
+    background: var(--employer-card-bg-dark);
+}
+
+.job-seeker-account.dark .sidebar-item {
+    color: white;
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: black;
+    text-decoration: none;
+}
+
+.sidebar-item:hover {
+    background: rgba(53, 170, 238, 0.15);
+}
+
+.sidebar-item.active {
+    background: rgba(40, 188, 247, 0.596);
+    font-weight: 600;
+}
+
+.sidebar-icon {
+    font-size: 1.25rem;
+}
+
+/* Main Content */
+.account-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Profile Section */
+.profile-section {
+    background: var(--employer-card-bg-light);
+    border-radius: var(--employer-border-radius);
+    padding: 2rem;
+    box-shadow: var(--employer-shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+}
+
+.job-seeker-account.dark .profile-section {
+    background: var(--employer-card-bg-dark);
+    border: 1px solid var(--employer-border-dark);
+}
+
+.profile-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--employer-text-light);
+    margin-bottom: 1rem;
+}
+
+.job-seeker-account.dark .profile-section h2 {
+    color: var(--employer-text-dark);
+}
+
+.profile-content {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.profile-picture-container {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--employer-primary);
+}
+
+.job-seeker-account.dark .profile-picture {
+    border-color: var(--employer-secondary);
+}
+
+.profile-picture-upload-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: var(--employer-primary);
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-label {
+    color: white;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-picture-upload {
+    display: none;
+}
+
+.profile-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.profile-details p {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1rem;
+    margin: 0;
+    color: black;
+}
+
+.job-seeker-account.dark .profile-details p {
+    color: var(--employer-card-bg-light);
+}
+
+.job-seeker-account.dark .profile-details {
+    background-color: rgba(15, 23, 42, 0.8);
+}
+
+.profile-details strong {
+    color: black;
+    font-weight: 600;
+}
+
+.job-seeker-account.dark .profile-details strong {
+    color: var(--jobsearch-footer-bg-light);
+}
+
+/* Forms */
+.profile-edit-form,
+.password-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: var(--employer-text-light);
+}
+
+.job-seeker-account.dark .form-group label {
+    color: var(--employer-text-dark);
+}
+
+.form-group input {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--employer-border-light);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.job-seeker-account.dark .form-group input {
+    background: #1e293b;
+    color: white;
+    border-color: var(--employer-border-dark);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--employer-primary);
+    box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.2);
+}
+
+.job-seeker-account.dark .form-group input:focus {
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.3);
+}
+
+.form-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Buttons */
+.edit-profile-btn,
+.change-password-btn,
+.company-details-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: 1rem;
+}
+
+.edit-profile-btn,
+.change-password-btn {
+    background: var(--employer-primary);
+    color: white;
+}
+
+.edit-profile-btn:hover,
+.change-password-btn:hover {
+    background: var(--employer-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--employer-shadow-hover);
+}
+
+.company-details-btn {
+    background: var(--employer-secondary);
+    color: white;
+    align-self: flex-start;
+}
+
+.company-details-btn:hover {
+    background: #0f766e;
+    transform: translateY(-2px);
+    box-shadow: var(--employer-shadow-hover);
+}
+
+.save-btn {
+    background: var(--employer-success);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.save-btn:hover {
+    background: var(--employer-success-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--employer-shadow-hover);
+}
+
+.cancel-btn {
+    background: var(--employer-border-light);
+    color: var(--employer-text-light);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.job-seeker-account.dark .cancel-btn {
+    background: var(--employer-border-dark);
+    color: var(--employer-text-dark);
+}
+
+.cancel-btn:hover {
+    background: #cbd5e1;
+    transform: translateY(-2px);
+    box-shadow: var(--employer-shadow-hover);
+}
+
+.job-seeker-account.dark .cancel-btn:hover {
+    background: #475569;
+}
+
+/* Jobs and Applicants Sections */
+.jobs-section,
+.applicants-section {
+    background: var(--employer-card-bg-light);
+    border-radius: var(--employer-border-radius);
+    padding: 2rem;
+    box-shadow: var(--employer-shadow);
+}
+
+.job-seeker-account.dark .jobs-section,
+.job-seeker-account.dark .applicants-section {
+    background: var(--employer-card-bg-dark);
+    border: 1px solid var(--employer-border-dark);
+}
+
+.jobs-section h2,
+.applicants-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--employer-text-light);
+    margin-bottom: 1.5rem;
+}
+
+.job-seeker-account.dark .jobs-section h2,
+.job-seeker-account.dark .applicants-section h2 {
+    color: var(--employer-text-dark);
+}
+
+.jobs-list,
+.applicants-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Job Card Styles */
+.job-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.job-seeker-account.dark .job-card {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-color: #94a3b8;
+}
+
+.job-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .job-card h3 {
+    color: #f8fafc;
+}
+
+.job-card p {
+    margin: 0.5rem 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.job-seeker-account.dark .job-card p {
+    color: #cbd5e1;
+}
+
+.job-card strong {
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .job-card strong {
+    color: #f8fafc;
+}
+
+/* Job Actions */
+.job-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.view-applicants-btn,
+.edit-job-btn,
+.delete-job-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.view-applicants-btn {
+    background: #0369a1;
+    color: white;
+}
+
+.view-applicants-btn:hover {
+    background: #075985;
+    transform: translateY(-2px);
+}
+
+.edit-job-btn {
+    background: #0d9488;
+    color: white;
+}
+
+.edit-job-btn:hover {
+    background: #0f766e;
+    transform: translateY(-2px);
+}
+
+.delete-job-btn {
+    background: #dc2626;
+    color: white;
+}
+
+.delete-job-btn:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+}
+
+/* Job Edit Form */
+.job-edit-form {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.job-seeker-account.dark .job-edit-form {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.job-edit-form h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1e293b;
+    text-align: center;
+}
+
+.job-seeker-account.dark .job-edit-form h3 {
+    color: #f8fafc;
+}
+
+.job-edit-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.job-edit-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .job-edit-form .form-group label {
+    color: #f8fafc;
+}
+
+.job-edit-form .form-group input,
+.job-edit-form .form-group select,
+.job-edit-form .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #1e293b;
+    font-size: 1rem;
+}
+
+.job-seeker-account.dark .job-edit-form .form-group input,
+.job-seeker-account.dark .job-edit-form .form-group select,
+.job-seeker-account.dark .job-edit-form .form-group textarea {
+    background: #0f172a;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.job-edit-form .form-group input:focus,
+.job-edit-form .form-group select:focus,
+.job-edit-form .form-group textarea:focus {
+    outline: none;
+    border-color: #0369a1;
+    box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.2);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.job-edit-form .form-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.job-edit-form .save-btn,
+.job-edit-form .cancel-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.job-edit-form .save-btn {
+    background: #16a34a;
+    color: white;
+}
+
+.job-edit-form .save-btn:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+}
+
+.job-edit-form .cancel-btn {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .job-edit-form .cancel-btn {
+    background: #334155;
+    color: #f8fafc;
+}
+
+.job-edit-form .cancel-btn:hover {
+    background: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.job-seeker-account.dark .job-edit-form .cancel-btn:hover {
+    background: #475569;
+}
+
+/* Password Section */
+.password-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--employer-border-light);
+}
+
+.job-seeker-account.dark .password-section {
+    border-top-color: var(--employer-border-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .job-seeker-account {
+        grid-template-columns: 240px 1fr;
+    }
+
+    .account-sidebar {
+        width: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    .job-seeker-account {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .account-sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+
+    .sidebar-item {
+        padding: 0.5rem 0.75rem;
+        white-space: nowrap;
+    }
+
+    .sidebar-item span {
+        display: none;
+    }
+
+    .profile-content {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-item {
+        padding: 0.5rem;
+    }
+
+    .sidebar-icon {
+        font-size: 1.1rem;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .save-btn,
+    .cancel-btn {
+        width: 100%;
+    }
+}
+
+/* Applicant Modal Styles */
+.applicant-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.applicant-modal-content {
+    background: var(--employer-card-bg-light);
+    border-radius: var(--employer-border-radius);
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: var(--employer-shadow);
+}
+
+.job-seeker-account.dark .applicant-modal-content {
+    background: var(--employer-card-bg-dark);
+    border: 1px solid var(--employer-border-dark);
+}
+
+.applicant-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.applicant-modal-header h3 {
+    font-size: 1.5rem;
+    color: var(--employer-text-light);
+    margin: 0;
+}
+
+.job-seeker-account.dark .applicant-modal-header h3 {
+    color: var(--employer-text-dark);
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--employer-text-secondary-light);
+}
+
+.job-seeker-account.dark .close-modal-btn {
+    color: var(--employer-text-secondary-dark);
+}
+
+/* Company Modal Fixes */
+.company-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 2rem;
+}
+
+.company-modal-content {
+    background: var(--employer-card-bg-light);
+    border-radius: var(--employer-border-radius);
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: var(--employer-shadow);
+}
+
+.job-seeker-account.dark .company-modal-content {
+    background: var(--employer-card-bg-dark);
+    border: 1px solid var(--employer-border-dark);
+}
+
+.job-seeker-account.dark .job-card {
+    background-color: rgba(15, 23, 42, 0.8);
+    color: white;
+}
+
+.job-seeker-account.dark .applicant-details p {
+    color: white;
+}
+
+.job-seeker-account.dark .applicant-card .applicant-header h3 {
+    color: white;
+}
+
+/* Applicant Card Styles */
+.applicant-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    border: 1px solid #e2e8f0;
+}
+
+.job-seeker-account.dark .applicant-card {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.applicant-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.applicant-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.applicant-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: #1e293b;
+}
+
+.job-seeker-account.dark .applicant-header h3 {
+    color: #f8fafc;
+}
+
+.applicant-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.accept-btn,
+.reject-btn {
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.accept-btn {
+    background: var(--employer-success);
+    color: white;
+}
+
+.accept-btn:hover {
+    background: var(--employer-success-hover);
+    transform: translateY(-2px);
+}
+
+.reject-btn {
+    background: var(--employer-danger);
+    color: white;
+}
+
+.reject-btn:hover {
+    background: var(--employer-danger-hover);
+    transform: translateY(-2px);
+}
+
+.applicant-meta {
+    margin-bottom: 1rem;
+}
+
+.applicant-meta p {
+    margin: 0.25rem 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.job-seeker-account.dark .applicant-meta p {
+    color: #cbd5e1;
+}
+
+.details-btn {
+    background: none;
+    border: 1px solid var(--employer-border-light);
+    color: var(--employer-text-light);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.job-seeker-account.dark .details-btn {
+    border-color: var(--employer-border-dark);
+    color: var(--employer-text-dark);
+}
+
+.details-btn:hover {
+    background: var(--employer-border-light);
+    transform: translateY(-2px);
+}
+
+.job-seeker-account.dark .details-btn:hover {
+    background: var(--employer-border-dark);
+}
+
+.applicant-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--employer-border-light);
+}
+
+.job-seeker-account.dark .applicant-details {
+    border-top-color: var(--employer-border-dark);
+}
+
+.applicant-details p {
+    margin: 0.5rem 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.job-seeker-account.dark .applicant-details p {
+    color: #cbd5e1;
+}
+
+/* Applicant Count Button */
+.view-applicants-btn {
+    background: var(--employer-primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.view-applicants-btn:hover {
+    background: var(--employer-primary-hover);
+    transform: translateY(-2px);
+}
+
+.applicant-count-badge {
+    background: white;
+    color: var(--employer-primary);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Header Styles */
+.careerplus__header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(var(--jobsearch-header-blur));
+    backdrop-filter: blur(var(--jobsearch-header-blur));
+    border-bottom: 1.5px solid var(--jobsearch-header-border-light);
+    background: var(--jobsearch-header-bg-light);
+    transition: all 0.3s;
+    box-shadow: 0 2px 12px 0 rgba(37, 99, 235, 0.04);
+}
+
+.job-seeker-account.dark .careerplus__header {
+    background: var(--jobsearch-header-bg-dark);
+    border-bottom: 1.5px solid var(--jobsearch-header-border-dark);
+}
+
+.careerplus__header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.careerplus__logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--jobsearch-title-light);
+    letter-spacing: -1px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.job-seeker-account.dark .careerplus__logo {
+    color: var(--jobsearch-title-dark);
+}
+
+.careerplus__nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.careerplus__nav-icon {
+    background: none;
+    border: none;
+    color: var(--jobsearch-icon);
+    font-size: 1.45rem;
+    cursor: pointer;
+    padding: 0.45rem;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    outline: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.careerplus__nav-icon:hover,
+.careerplus__nav-icon:focus {
+    background: rgba(59, 130, 246, 0.10);
+    color: var(--jobsearch-icon-hover);
+    box-shadow: 0 2px 8px 0 rgba(37, 99, 235, 0.10);
+}
+
+.job-seeker-account.dark .careerplus__nav-icon {
+    color: #60a5fa;
+    background: none;
+}
+
+.job-seeker-account.dark .careerplus__nav-icon:hover,
+.job-seeker-account.dark .careerplus__nav-icon:focus {
+    background: rgba(59, 130, 246, 0.18);
+    color: #fff;
+}
+
+.careerplus__theme-toggle {
+    background: none;
+    border: none;
+    color: var(--jobsearch-icon);
+    font-size: 1.45rem;
+    cursor: pointer;
+    padding: 0.45rem;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.careerplus__theme-toggle:hover,
+.careerplus__theme-toggle:focus {
+    background: rgba(59, 130, 246, 0.10);
+    color: var(--jobsearch-icon-hover);
+}
+
+.job-seeker-account.dark .careerplus__theme-toggle {
+    color: #60a5fa;
+}
+
+.job-seeker-account.dark .careerplus__theme-toggle:hover,
+.job-seeker-account.dark .careerplus__theme-toggle:focus {
+    background: rgba(59, 130, 246, 0.18);
+    color: #fff;
+}
+
+/* Footer Styles */
+.careerplus__footer {
+    background: var(--jobsearch-footer-bg-light);
+    border-top: 1.5px solid var(--jobsearch-footer-border-light);
+    padding: 4rem 0 2rem;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+}
+
+.job-seeker-account.dark .careerplus__footer {
+    background: var(--jobsearch-footer-bg-dark);
+    border-top: 1.5px solid var(--jobsearch-footer-border-dark);
+}
+
+.careerplus__footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.careerplus__footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.careerplus__footer-text {
+    color: var(--jobsearch-subtitle-light);
+    line-height: 1.6;
+}
+
+.job-seeker-account.dark .careerplus__footer-text {
+    color: var(--jobsearch-subtitle-dark);
+}
+
+.careerplus__footer-heading {
+    color: var(--jobsearch-title-light);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.job-seeker-account.dark .careerplus__footer-heading {
+    color: var(--jobsearch-title-dark);
+}
+
+.careerplus__footer-link {
+    color: var(--jobsearch-subtitle-light);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.75rem;
+    transition: color 0.2s;
+}
+
+.job-seeker-account.dark .careerplus__footer-link {
+    color: var(--jobsearch-subtitle-dark);
+}
+
+.careerplus__footer-link:hover {
+    color: var(--jobsearch-link);
+}
+
+.careerplus__social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.careerplus__social-icon {
+    color: var(--jobsearch-subtitle-light);
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+.job-seeker-account.dark .careerplus__social-icon {
+    color: var(--jobsearch-subtitle-dark);
+}
+
+.careerplus__social-icon:hover {
+    color: var(--jobsearch-link);
+}
+
+.careerplus__footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding: 2rem 2rem 0;
+    border-top: 1px solid var(--jobsearch-footer-border-light);
+    text-align: center;
+    color: var(--jobsearch-subtitle-light);
+}
+
+.job-seeker-account.dark .careerplus__footer-bottom {
+    border-top-color: var(--jobsearch-footer-border-dark);
+    color: var(--jobsearch-subtitle-dark);
+}
+
+/* Company Section */
+.profile-section .profile-content {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+}
+
+.profile-section .profile-details {
+    max-width: 600px;
+    width: 100%;
+    color: black;
+}
+
+.profile-section .profile-details p {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 0;
+    width: 100%;
+    color: black;
+}
+
+.profile-section .profile-details strong {
+    min-width: 150px;
+    color: black;
+    font-weight: 600;
+}
+
+.job-seeker-account.dark .profile-section .profile-details strong {
+    color: var(--employer-text-dark);
+}
+
+.profile-section .profile-details p {
+    color: black;
+}
+
+.job-seeker-account.dark .profile-section .profile-details p {
+    color: var(--employer-text-secondary-dark);
+}
+
+.company-details-btn {
+    margin-top: 2rem;
+    align-self: flex-start;
+}
+
+/* No Applicants Message */
+.no-applicants-message {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.job-seeker-account.dark .no-applicants-message {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+.no-applicants-message p {
+    margin: 0 0 1rem 0;
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.job-seeker-account.dark .no-applicants-message p {
+    color: #cbd5e1;
+}
+
+.no-applicants-message p:first-child {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+}
+
+.job-seeker-account.dark .no-applicants-message p:first-child {
+    color: #f8fafc;
+}
+
+.help-text {
+    font-size: 0.95rem !important;
+    line-height: 1.5;
+}
+
+.refresh-button {
+    background: var(--employer-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+.refresh-button:hover {
+    background: var(--employer-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Profile Completeness Indicator Styles */
+.profile-completeness {
+    background: var(--employer-card-bg-light);
+    border-radius: var(--employer-border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--employer-shadow);
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--employer-border-light);
+}
+
+.job-seeker-account.dark .profile-completeness {
+    background: var(--employer-card-bg-dark);
+    border-color: var(--employer-border-dark);
+}
+
+.completeness-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.completeness-header h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--employer-text-light);
+    margin: 0;
+}
+
+.job-seeker-account.dark .completeness-header h3 {
+    color: var(--employer-text-dark);
+}
+
+.completeness-percentage {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--employer-primary);
+}
+
+.progress-container {
+    width: 100%;
+    height: 12px;
+    background: var(--employer-border-light);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.job-seeker-account.dark .progress-container {
+    background: var(--employer-border-dark);
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.3s ease;
+}
+
+.completeness-message {
+    margin-bottom: 1rem;
+}
+
+.completeness-message p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.low-completeness {
+    color: #ef4444;
+}
+
+.medium-completeness {
+    color: #f59e0b;
+}
+
+.high-completeness {
+    color: #10b981;
+}
+
+.alert-icon {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+.check-icon {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+}
+
+/* Missing Fields Section */
+.missing-fields-section {
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.job-seeker-account.dark .missing-fields-section {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.missing-fields-section h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ef4444;
+    margin: 0 0 0.75rem 0;
+}
+
+.missing-fields-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.missing-field-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+    padding: 0.375rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.job-seeker-account.dark .missing-field-item {
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+}
+
+.field-icon {
+    font-size: 0.875rem;
+}
+
+.missing-fields-note {
+    margin: 0.75rem 0 0 0;
+    font-size: 0.875rem;
+    color: var(--employer-text-secondary-light);
+    font-style: italic;
+}
+
+.job-seeker-account.dark .missing-fields-note {
+    color: var(--employer-text-secondary-dark);
+}
+
+.job-seeker-account {
+   /* Add closing brace for the main rule */
+}

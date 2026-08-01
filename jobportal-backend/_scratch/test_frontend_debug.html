@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Authentication Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .success { background-color: #d4edda; border-color: #c3e6cb; }
+        .error { background-color: #f8d7da; border-color: #f5c6cb; }
+        .warning { background-color: #fff3cd; border-color: #ffeaa7; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 3px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Frontend Authentication Debug Tool</h1>
+
+    <div class="test-section warning">
+        <h3>Step 1: Clear Browser Data</h3>
+        <p>Open Developer Tools (F12) → Application tab → Clear Storage → Clear all data</p>
+        <button onclick="clearStorage()">Clear LocalStorage & SessionStorage</button>
+    </div>
+
+    <div class="test-section">
+        <h3>Step 2: Test Login</h3>
+        <input type="email" id="email" value="admin@jobportal.com" placeholder="Email">
+        <input type="password" id="password" value="Admin123!" placeholder="Password">
+        <button onclick="testLogin()">Test Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Step 3: Test System Settings API</h3>
+        <button onclick="testSystemSettings()">Test System Settings</button>
+        <div id="settingsResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Step 4: Test CMS API</h3>
+        <button onclick="testCMS()">Test CMS Pages</button>
+        <div id="cmsResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Debug Info</h3>
+        <button onclick="showDebugInfo()">Show Current Storage</button>
+        <div id="debugInfo"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://127.0.0.1:8000/api';
+
+        function clearStorage() {
+            localStorage.clear();
+            sessionStorage.clear();
+            document.getElementById('debugInfo').innerHTML = '<p class="success">Storage cleared!</p>';
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch(`${API_BASE}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password,
+                        userType: 'admin'
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Store token like the frontend does
+                    localStorage.setItem('access_token', data.access_token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+
+                    document.getElementById('loginResult').innerHTML =
+                        '<p class="success">✅ Login successful! Token stored.</p>' +
+                        '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                } else {
+                    document.getElementById('loginResult').innerHTML =
+                        '<p class="error">❌ Login failed: ' + (data.message || 'Unknown error') + '</p>' +
+                        '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                }
+            } catch (error) {
+                document.getElementById('loginResult').innerHTML =
+                    '<p class="error">❌ Network error: ' + error.message + '</p>';
+            }
+        }
+
+        async function testSystemSettings() {
+            const token = localStorage.getItem('access_token');
+
+            if (!token) {
+                document.getElementById('settingsResult').innerHTML =
+                    '<p class="error">❌ No access token found. Please login first.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/settings`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const count = data.data ? data.data.length : 0;
+                    document.getElementById('settingsResult').innerHTML =
+                        '<p class="success">✅ System Settings API working! Retrieved ' + count + ' settings.</p>' +
+                        '<pre>' + JSON.stringify(data, null, 2).substring(0, 500) + '...</pre>';
+                } else {
+                    document.getElementById('settingsResult').innerHTML =
+                        '<p class="error">❌ API failed: ' + (data.message || 'Unknown error') + '</p>' +
+                        '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                }
+            } catch (error) {
+                document.getElementById('settingsResult').innerHTML =
+                    '<p class="error">❌ Network error: ' + error.message + '</p>';
+            }
+        }
+
+        async function testCMS() {
+            const token = localStorage.getItem('access_token');
+
+            if (!token) {
+                document.getElementById('cmsResult').innerHTML =
+                    '<p class="error">❌ No access token found. Please login first.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/admin/cms/pages`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Accept': 'application/json'
+                    }
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const count = data.data ? data.data.length : 0;
+                    document.getElementById('cmsResult').innerHTML =
+                        '<p class="success">✅ CMS API working! Retrieved ' + count + ' pages.</p>' +
+                        '<pre>' + JSON.stringify(data, null, 2).substring(0, 500) + '...</pre>';
+                } else {
+                    document.getElementById('cmsResult').innerHTML =
+                        '<p class="error">❌ API failed: ' + (data.message || 'Unknown error') + '</p>' +
+                        '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                }
+            } catch (error) {
+                document.getElementById('cmsResult').innerHTML =
+                    '<p class="error">❌ Network error: ' + error.message + '</p>';
+            }
+        }
+
+        function showDebugInfo() {
+            const token = localStorage.getItem('access_token');
+            const user = localStorage.getItem('user');
+
+            let info = '<h4>Current Storage:</h4>';
+            info += '<p><strong>Access Token:</strong> ' + (token ? token.substring(0, 20) + '...' : 'Not found') + '</p>';
+            info += '<p><strong>User:</strong> ' + (user ? 'Found' : 'Not found') + '</p>';
+
+            if (user) {
+                try {
+                    const userData = JSON.parse(user);
+                    info += '<pre>' + JSON.stringify(userData, null, 2) + '</pre>';
+                } catch (e) {
+                    info += '<p class="error">Invalid user JSON</p>';
+                }
+            }
+
+            document.getElementById('debugInfo').innerHTML = info;
+        }
+
+        // Auto-show debug info on load
+        window.onload = function() {
+            showDebugInfo();
+        };
+    </script>
+</body>
+</html>

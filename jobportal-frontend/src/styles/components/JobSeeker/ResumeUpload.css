@@ -1,0 +1,944 @@
+/* Resume Upload Section Styles */
+.resume-section {
+    padding: 2rem 0;
+}
+
+.resume-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.job-seeker-account.dark .resume-section h2 {
+    color: #f8fafc;
+}
+
+.resume-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.resume-upload-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.job-seeker-account.dark .resume-upload-section {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}
+
+/* Upload Area */
+.resume-upload-area {
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+    background: #f8fafc;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-seeker-account.dark .resume-upload-area {
+    border-color: #475569;
+    background: #334155;
+}
+
+.resume-upload-area:hover {
+    border-color: #3b82f6;
+    background: #eff6ff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.15);
+}
+
+.job-seeker-account.dark .resume-upload-area:hover {
+    background: #1e293b;
+    border-color: #60a5fa;
+}
+
+.resume-upload-area.dragover {
+    border-color: #10b981;
+    background: #f0fdf4;
+    transform: scale(1.02);
+}
+
+.job-seeker-account.dark .resume-upload-area.dragover {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: #34d399;
+}
+
+.resume-upload-area::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.resume-upload-area:hover::before {
+    left: 100%;
+}
+
+.upload-icon {
+    font-size: 4rem;
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.resume-upload-area:hover .upload-icon {
+    color: #3b82f6;
+    transform: scale(1.1);
+}
+
+.job-seeker-account.dark .upload-icon {
+    color: #64748b;
+}
+
+.job-seeker-account.dark .resume-upload-area:hover .upload-icon {
+    color: #60a5fa;
+}
+
+.upload-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.job-seeker-account.dark .upload-text {
+    color: #f8fafc;
+}
+
+.upload-description {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.job-seeker-account.dark .upload-description {
+    color: #cbd5e1;
+}
+
+.upload-requirements {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    background: #f1f5f9;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.job-seeker-account.dark .upload-requirements {
+    background: #334155;
+    color: #cbd5e1;
+}
+
+/* File Input (Hidden) */
+.resume-file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Upload Button */
+.resume-upload-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.875rem 2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.resume-upload-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+}
+
+.resume-upload-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.resume-upload-btn:disabled {
+    background: #cbd5e1;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.job-seeker-account.dark .resume-upload-btn:disabled {
+    background: #475569;
+}
+
+.resume-upload-btn::before {
+    content: '📤';
+    font-size: 1rem;
+}
+
+.resume-upload-btn.uploading::before {
+    content: '⏳';
+    animation: spin 1s linear infinite;
+}
+
+.resume-upload-btn.success::before {
+    content: '✅';
+}
+
+.resume-upload-btn.error::before {
+    content: '❌';
+}
+
+/* Current Resume Display */
+.current-resume {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #e2e8f0;
+}
+
+.job-seeker-account.dark .current-resume {
+    border-color: #334155;
+}
+
+.current-resume h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.job-seeker-account.dark .current-resume h3 {
+    color: #f8fafc;
+}
+
+.current-resume h3::before {
+    content: '📄';
+    font-size: 1.25rem;
+}
+
+.resume-file-card {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s ease;
+}
+
+.job-seeker-account.dark .resume-file-card {
+    background: #334155;
+    border-color: #475569;
+}
+
+.resume-file-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.resume-file-icon {
+    font-size: 2.5rem;
+    color: #3b82f6;
+}
+
+.resume-file-info {
+    flex: 1;
+}
+
+.resume-file-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 0.25rem;
+}
+
+.job-seeker-account.dark .resume-file-name {
+    color: #f8fafc;
+}
+
+.resume-file-meta {
+    font-size: 0.875rem;
+    color: #64748b;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.job-seeker-account.dark .resume-file-meta {
+    color: #cbd5e1;
+}
+
+.resume-file-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn-view-resume,
+.btn-download-resume,
+.btn-delete-resume {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-view-resume {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.btn-view-resume:hover {
+    background: #e2e8f0;
+    color: #334155;
+}
+
+.btn-download-resume {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.btn-download-resume:hover {
+    background: #bbf7d0;
+    color: #14532d;
+}
+
+.btn-delete-resume {
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+.btn-delete-resume:hover {
+    background: #fecaca;
+    color: #7f1d1d;
+}
+
+.job-seeker-account.dark .btn-view-resume {
+    background: #475569;
+    color: #f8fafc;
+}
+
+.job-seeker-account.dark .btn-view-resume:hover {
+    background: #334155;
+    color: #f1f5f9;
+}
+
+.job-seeker-account.dark .btn-download-resume {
+    background: rgba(34, 197, 94, 0.2);
+    color: #bbf7d0;
+}
+
+.job-seeker-account.dark .btn-download-resume:hover {
+    background: rgba(34, 197, 94, 0.3);
+    color: #86efac;
+}
+
+.job-seeker-account.dark .btn-delete-resume {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fecaca;
+}
+
+.job-seeker-account.dark .btn-delete-resume:hover {
+    background: rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+}
+
+.btn-view-resume::before {
+    content: '👁️';
+    font-size: 1rem;
+}
+
+.btn-download-resume::before {
+    content: '⬇️';
+    font-size: 1rem;
+}
+
+.btn-delete-resume::before {
+    content: '🗑️';
+    font-size: 1rem;
+}
+
+/* Upload Progress */
+.upload-progress {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.upload-progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.job-seeker-account.dark .upload-progress-bar {
+    background: #475569;
+}
+
+.upload-progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.upload-progress-text {
+    font-size: 0.875rem;
+    color: #64748b;
+    text-align: center;
+}
+
+.job-seeker-account.dark .upload-progress-text {
+    color: #cbd5e1;
+}
+
+/* Status Messages */
+.upload-status {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.upload-status.success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.upload-status.error {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.upload-status.info {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+.job-seeker-account.dark .upload-status.success {
+    background: rgba(34, 197, 94, 0.2);
+    color: #bbf7d0;
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.job-seeker-account.dark .upload-status.error {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fecaca;
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.job-seeker-account.dark .upload-status.info {
+    background: rgba(59, 130, 246, 0.2);
+    color: #bfdbfe;
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.upload-status::before {
+    font-size: 1.25rem;
+}
+
+.upload-status.success::before {
+    content: '✅';
+}
+
+.upload-status.error::before {
+    content: '❌';
+}
+
+.upload-status.info::before {
+    content: 'ℹ️';
+}
+
+/* File Type Indicators */
+.file-type-pdf {
+    color: #dc2626;
+}
+
+.file-type-doc,
+.file-type-docx {
+    color: #2563eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .resume-section {
+        padding: 1.5rem 0;
+    }
+
+    .resume-upload-section {
+        padding: 1.5rem;
+    }
+
+    .resume-upload-area {
+        padding: 2rem 1rem;
+    }
+
+    .upload-icon {
+        font-size: 3rem;
+    }
+
+    .upload-text {
+        font-size: 1rem;
+    }
+
+    .upload-description {
+        font-size: 0.8rem;
+    }
+
+    .resume-upload-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .resume-file-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .resume-file-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-view-resume,
+    .btn-download-resume,
+    .btn-delete-resume {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .resume-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .resume-upload-section {
+        padding: 1rem;
+    }
+
+    .resume-upload-area {
+        padding: 1.5rem 1rem;
+    }
+
+    .upload-icon {
+        font-size: 2.5rem;
+    }
+
+    .upload-text {
+        font-size: 0.9rem;
+    }
+
+    .upload-description {
+        font-size: 0.75rem;
+    }
+
+    .upload-requirements {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .resume-file-card {
+        padding: 1rem;
+    }
+
+    .resume-file-icon {
+        font-size: 2rem;
+    }
+
+    .resume-file-name {
+        font-size: 0.9rem;
+    }
+
+    .resume-file-meta {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 0.25rem;
+        align-items: center;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced_motion: reduce) {
+    .resume-upload-area,
+    .resume-file-card,
+    .resume-upload-btn,
+    .btn-view-resume,
+    .btn-download-resume,
+    .btn-delete-resume {
+        transition: none;
+    }
+
+    .resume-upload-area:hover,
+    .resume-file-card:hover {
+        transform: none;
+    }
+
+    .resume-upload-btn:hover,
+    .btn-view-resume:hover,
+    .btn-download-resume:hover,
+    .btn-delete-resume:hover {
+        transform: none;
+    }
+
+    .upload-progress-fill {
+        transition: none;
+    }
+
+    .resume-upload-area::before {
+        display: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .resume-upload-area,
+    .resume-file-card {
+        border: 2px solid;
+    }
+
+    .resume-upload-btn,
+    .btn-view-resume,
+    .btn-download-resume,
+    .btn-delete-resume {
+        border: 2px solid;
+    }
+
+    .upload-status {
+        border: 2px solid;
+    }
+}
+
+/* Focus visible for better accessibility */
+.resume-upload-btn:focus-visible,
+.btn-view-resume:focus-visible,
+.btn-download-resume:focus-visible,
+.btn-delete-resume:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.job-seeker-account.dark .resume-upload-btn:focus-visible,
+.job-seeker-account.dark .btn-view-resume:focus-visible,
+.job-seeker-account.dark .btn-download-resume:focus-visible,
+.job-seeker-account.dark .btn-delete-resume:focus-visible {
+    outline-color: #60a5fa;
+}
+
+/* Print styles */
+@media print {
+    .resume-upload-section {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+
+    .resume-upload-area {
+        border: 2px solid #000;
+        background: white !important;
+    }
+
+    .resume-upload-btn,
+    .btn-view-resume,
+    .btn-download-resume,
+    .btn-delete-resume {
+        display: none;
+    }
+
+    .resume-file-input {
+        display: none;
+    }
+}
+
+/* Animation for content loading */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.resume-upload-section {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced visual hierarchy */
+.resume-section h2 {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.resume-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 2px;
+}
+
+/* Enhanced upload area styling */
+.resume-upload-area {
+    position: relative;
+}
+
+.resume-upload-area::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0;
+    border-color: transparent rgba(59, 130, 246, 0.1) transparent transparent;
+    transition: all 0.3s ease;
+}
+
+.resume-upload-area:hover::after {
+    border-color: transparent rgba(59, 130, 246, 0.2) transparent transparent;
+}
+
+/* Enhanced button styling */
+.resume-upload-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-upload-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.resume-upload-btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Enhanced file card styling */
+.resume-file-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.resume-file-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 8px 8px 0 0;
+}
+
+.resume-file-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 0;
+    border-color: transparent rgba(59, 130, 246, 0.1) transparent transparent;
+    transition: all 0.3s ease;
+}
+
+.resume-file-card:hover::after {
+    border-color: transparent rgba(59, 130, 246, 0.2) transparent transparent;
+}
+
+/* Enhanced status message styling */
+.upload-status {
+    position: relative;
+    overflow: hidden;
+}
+
+.upload-status::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* File size and type validation styling */
+.file-validation {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.validation-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+}
+
+.job-seeker-account.dark .validation-item {
+    background: #334155;
+    color: #cbd5e1;
+}
+
+.validation-item.valid {
+    color: #166534;
+    background: #dcfce7;
+}
+
+.job-seeker-account.dark .validation-item.valid {
+    background: rgba(34, 197, 94, 0.2);
+    color: #bbf7d0;
+}
+
+.validation-item.invalid {
+    color: #991b1b;
+    background: #fef2f2;
+}
+
+.job-seeker-account.dark .validation-item.invalid {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fecaca;
+}
+
+.validation-item::before {
+    font-size: 0.75rem;
+}
+
+.validation-item.valid::before {
+    content: '✅';
+}
+
+.validation-item.invalid::before {
+    content: '❌';
+}
+
+.validation-item.pending::before {
+    content: '⏳';
+}
+
+/* Drag and drop visual feedback */
+.drag-drop-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(59, 130, 246, 0.9);
+    color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+    text-align: center;
+}
+
+.drag-drop-feedback.visible {
+    opacity: 1;
+}
+
+.drag-drop-feedback::before {
+    content: '📂';
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Mobile drag and drop overlay */
+@media (max-width: 768px) {
+    .drag-drop-feedback {
+        width: 90%;
+        max-width: 300px;
+        padding: 1.5rem;
+        font-size: 1rem;
+    }
+
+    .drag-drop-feedback::before {
+        font-size: 1.5rem;
+    }
+}

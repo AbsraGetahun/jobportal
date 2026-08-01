@@ -1,0 +1,398 @@
+:root {
+    --login-bg-light: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+    --login-bg-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    --login-card-bg-light: rgba(255,255,255,0.85);
+    --login-card-bg-dark: rgba(30,41,59,0.85);
+    --login-card-blur: 18px;
+    --login-card-border-light: rgba(59,130,246,0.12);
+    --login-card-border-dark: rgba(59,130,246,0.25);
+    --login-shadow: 0 8px 32px rgba(37,99,235,0.10), 0 1.5px 8px rgba(0,0,0,0.10);
+    --login-title-light: #1e293b;
+    --login-title-dark: #f8fafc;
+    --login-subtitle-light: #64748b;
+    --login-subtitle-dark: #cbd5e1;
+    --login-input-bg-light: #f8fafc;
+    --login-input-bg-dark: #1e293b;
+    --login-input-border: #3b82f6;
+    --login-btn-gradient: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+    --login-btn-gradient-hover: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    --login-btn-text: #fff;
+    --login-link: #3b82f6;
+    --login-link-hover: #2563eb;
+    --login-error: #ef4444;
+}
+
+.careerplus-login-root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--jobsearch-bg-light);
+}
+
+.careerplus-login-root.dark {
+    background: var(--jobsearch-bg-dark);
+}
+
+.careerplus-login-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    padding: 2rem 1rem;
+    margin-top: 6.5rem;
+}
+
+.careerplus-login-card {
+    background: var(--login-card-bg-light);
+    border-radius: 1.5rem;
+    box-shadow: var(--login-shadow);
+    padding: 2.5rem 2rem;
+    max-width: 420px;
+    width: 100%;
+    border: 1.5px solid var(--login-card-border-light);
+    -webkit-backdrop-filter: blur(var(--login-card-blur));
+    backdrop-filter: blur(var(--login-card-blur));
+    transition: all 0.3s;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.careerplus-login-root.dark .careerplus-login-card {
+    background: var(--login-card-bg-dark);
+    border: 1.5px solid var(--login-card-border-dark);
+}
+.careerplus-login-card:hover {
+    transform: translateY(-6px) scale(1.012);
+    box-shadow: 0 20px 40px 0 rgba(37,99,235,0.13), 0 8px 24px 0 rgba(0,0,0,0.18);
+    border-color: #3b82f6;
+}
+
+.careerplus-login-title {
+    font-size: 2.1rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: var(--login-title-light);
+    letter-spacing: -1px;
+}
+.careerplus-login-root.dark .careerplus-login-title {
+    color: var(--login-title-dark);
+}
+.careerplus-login-subtitle {
+    color: var(--login-subtitle-light);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.08rem;
+}
+.careerplus-login-root.dark .careerplus-login-subtitle {
+    color: var(--login-subtitle-dark);
+}
+
+.careerplus-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.careerplus-login-label {
+    font-weight: 600;
+    color: var(--login-title-light);
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+.careerplus-login-root.dark .careerplus-login-label {
+    color: var(--login-title-dark);
+}
+
+.careerplus-login-input {
+    padding: 0.85rem 1.1rem;
+    border-radius: 0.75rem;
+    border: 1.5px solid #e2e8f0;
+    background: var(--login-input-bg-light);
+    font-size: 1.05rem;
+    color: var(--login-title-light);
+    transition: border-color 0.3s, background 0.3s;
+    outline: none;
+    margin-top: 0.1rem;
+}
+.careerplus-login-root.dark .careerplus-login-input {
+    background: var(--login-input-bg-dark);
+    color: var(--login-title-dark);
+    border: 1.5px solid #334155;
+}
+.careerplus-login-input:focus {
+    border-color: var(--login-input-border);
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.13);
+}
+
+.careerplus-login-input.invalid {
+    border-color: var(--login-error);
+    box-shadow: 0 0 0 2px rgba(239,68,68,0.13);
+}
+
+/* User Type Radio Group Styles */
+.user-type-group {
+    margin-bottom: 0.5rem;
+}
+.user-type-options {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 0.3rem;
+}
+.user-type-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.1rem;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    background: #f8fafc;
+    color: #1e293b;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    box-shadow: none;
+    font-size: 1rem;
+}
+.user-type-option.selected {
+    border-color: #3b82f6;
+    background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 100%);
+    color: #fff;
+}
+.user-type-option input[type="radio"] {
+    accent-color: #3b82f6;
+    margin-right: 0.5rem;
+    width: 1.1rem;
+    height: 1.1rem;
+}
+.user-type-option:hover,
+.user-type-option:focus-within {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.08);
+    color: #3b82f6;
+}
+.user-type-option.selected:hover {
+    background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
+    color: #fff;
+}
+.careerplus-login-root.dark .user-type-option {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: #334155;
+}
+.careerplus-login-root.dark .user-type-option.selected {
+    background: linear-gradient(90deg, #2563eb 0%, #3b82f6 100%);
+    color: #fff;
+    border-color: #3b82f6;
+}
+.careerplus-login-root.dark .user-type-option:hover,
+.careerplus-login-root.dark .user-type-option:focus-within {
+    background: rgba(59, 130, 246, 0.15);
+    color: #60a5fa;
+    border-color: #3b82f6;
+}
+
+.careerplus-login-btn {
+    background: var(--login-btn-gradient);
+    color: var(--login-btn-text);
+    border: none;
+    padding: 0.95rem 0;
+    border-radius: 0.75rem;
+    font-size: 1.08rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    box-shadow: 0 2px 8px 0 rgba(59,130,246,0.08);
+    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+    display: block;
+    width: 100%;
+}
+.careerplus-login-btn:hover {
+    background: var(--login-btn-gradient-hover);
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 8px 24px 0 #2563eb33;
+}
+
+.careerplus-login-link {
+    color: var(--login-link);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.careerplus-login-link:hover {
+    color: var(--login-link-hover);
+    text-decoration: underline;
+}
+
+.careerplus-login-footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--login-subtitle-light);
+    font-size: 1rem;
+}
+.careerplus-login-root.dark .careerplus-login-footer {
+    color: var(--login-subtitle-dark);
+}
+
+.careerplus-login-error {
+    color: var(--login-error);
+    background: #fee2e2;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #ef4444;
+    animation: shake 0.2s 1;
+}
+.careerplus-login-root.dark .careerplus-login-error {
+    background: #7f1d1d;
+    color: #fee2e2;
+    border: 1px solid #ef4444;
+}
+
+.careerplus-login-success {
+    color: #16a34a;
+    background: #dcfce7;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #22c55e;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.careerplus-login-root.dark .careerplus-login-success {
+    background: #14532d;
+    color: #dcfce7;
+    border: 1px solid #22c55e;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 600px) {
+    .careerplus-login-card {
+        padding: 1.5rem 0.7rem;
+        border-radius: 1rem;
+    }
+    .careerplus-login-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Footer Styles */
+.careerplus__footer {
+    background: var(--jobsearch-footer-bg-light);
+    border-top: 1.5px solid var(--jobsearch-footer-border-light);
+    padding: 4rem 0 2rem;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+}
+
+.careerplus-login-root.dark .careerplus__footer {
+    background: var(--jobsearch-footer-bg-dark);
+    border-top: 1.5px solid var(--jobsearch-footer-border-dark);
+}
+
+.careerplus__footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+}
+
+.careerplus__footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.careerplus__footer-text {
+    color: var(--jobsearch-subtitle-light);
+    line-height: 1.6;
+}
+
+.careerplus-login-root.dark .careerplus__footer-text {
+    color: var(--jobsearch-subtitle-dark);
+}
+
+.careerplus__footer-heading {
+    color: var(--jobsearch-title-light);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.careerplus-login-root.dark .careerplus__footer-heading {
+    color: var(--jobsearch-title-dark);
+}
+
+.careerplus__footer-link {
+    color: var(--jobsearch-subtitle-light);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.75rem;
+    transition: color 0.2s;
+}
+
+.careerplus-login-root.dark .careerplus__footer-link {
+    color: var(--jobsearch-subtitle-dark);
+}
+
+.careerplus__footer-link:hover {
+    color: var(--jobsearch-link);
+}
+
+.careerplus__social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.careerplus__social-icon {
+    color: var(--jobsearch-subtitle-light);
+    font-size: 1.5rem;
+    transition: color 0.2s;
+}
+
+.careerplus-login-root.dark .careerplus__social-icon {
+    color: var(--jobsearch-subtitle-dark);
+}
+
+.careerplus__social-icon:hover {
+    color: var(--jobsearch-link);
+}
+
+.careerplus__footer-bottom {
+    max-width: 1200px;
+    margin: 3rem auto 0;
+    padding: 2rem 2rem 0;
+    border-top: 1px solid var(--jobsearch-footer-border-light);
+    text-align: center;
+    color: var(--jobsearch-subtitle-light);
+}
+
+.careerplus-login-root.dark .careerplus__footer-bottom {
+    border-top-color: var(--jobsearch-footer-border-dark);
+    color: var(--jobsearch-subtitle-dark);
+}

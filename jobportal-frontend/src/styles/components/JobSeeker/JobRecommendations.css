@@ -1,0 +1,958 @@
+/* Job Recommendations Component Styles */
+.job-recommendations {
+    width: 100%;
+    max-width: 100%;
+}
+
+.recommendations-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Recommendation Card */
+.recommendation-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-seeker-account.dark .recommendation-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Recommendation Header */
+.recommendation-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    gap: 1rem;
+}
+
+.company-logo-placeholder {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    flex-shrink: 0;
+}
+
+.job-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.job-info h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.job-seeker-account.dark .job-info h4 {
+    color: #f8fafc;
+}
+
+.company-name {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+.job-seeker-account.dark .company-name {
+    color: #cbd5e1;
+}
+
+.match-percentage {
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.match-percentage span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #10b981;
+    line-height: 1;
+}
+
+.match-percentage p {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin: 0.25rem 0 0 0;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.job-seeker-account.dark .match-percentage p {
+    color: #cbd5e1;
+}
+
+/* Job Details */
+.job-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    margin-bottom: 1.5rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.job-seeker-account.dark .job-details {
+    border-color: #334155;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.detail-row:hover {
+    background: rgba(59, 130, 246, 0.03);
+}
+
+.job-seeker-account.dark .detail-row:hover {
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.detail-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-width: 70px;
+    flex-shrink: 0;
+}
+
+.job-seeker-account.dark .detail-label {
+    color: #94a3b8;
+}
+
+.detail-value {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #475569;
+    font-weight: 500;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.job-seeker-account.dark .detail-value {
+    color: #cbd5e1;
+}
+
+.detail-icon {
+    width: 16px;
+    height: 16px;
+    color: #64748b;
+    flex-shrink: 0;
+}
+
+.job-seeker-account.dark .detail-icon {
+    color: #94a3b8;
+}
+
+.detail-value span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: right;
+}
+
+/* Recommendation Actions */
+.recommendation-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+}
+
+.view-details-btn,
+.apply-btn {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.view-details-btn {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #e2e8f0;
+}
+
+.view-details-btn:hover {
+    background: #e2e8f0;
+    color: #334155;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.job-seeker-account.dark .view-details-btn {
+    background: #334155;
+    color: #cbd5e1;
+    border-color: #475569;
+}
+
+.job-seeker-account.dark .view-details-btn:hover {
+    background: #475569;
+    color: #f8fafc;
+}
+
+.apply-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.apply-btn:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+}
+
+.apply-btn:active {
+    transform: translateY(0);
+}
+
+/* Loading and Error States */
+.recommendations-loading,
+.recommendations-error {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #64748b;
+}
+
+.job-seeker-account.dark .recommendations-loading,
+.job-seeker-account.dark .recommendations-error {
+    color: #cbd5e1;
+}
+
+.recommendations-loading p,
+.recommendations-error p {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Enhanced Spacing and Layout */
+.recommendation-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+}
+
+.recommendation-header {
+    margin-bottom: 1.25rem;
+}
+
+.job-details {
+    flex: 1;
+    margin-bottom: 1.5rem;
+}
+
+.recommendation-actions {
+    margin-top: auto;
+    padding-top: 1rem;
+}
+
+/* Improved Grid Layout */
+.recommendations-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Enhanced Visual Hierarchy */
+.job-info h4 {
+    margin-bottom: 0.375rem;
+    font-size: 1.125rem;
+    line-height: 1.4;
+}
+
+.company-name {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Better Detail Item Layout */
+.detail-item {
+    padding: 0.375rem 0;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.detail-item:hover {
+    background: rgba(59, 130, 246, 0.05);
+}
+
+.job-seeker-account.dark .detail-item:hover {
+    background: rgba(59, 130, 246, 0.1);
+}
+
+/* Enhanced Button Styling */
+.view-details-btn,
+.apply-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.view-details-btn::before,
+.apply-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.view-details-btn:active::before,
+.apply-btn:active::before {
+    width: 120px;
+    height: 120px;
+}
+
+/* Enhanced Match Percentage */
+.match-percentage {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.job-seeker-account.dark .match-percentage {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .recommendations-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .recommendation-card {
+        padding: 1.25rem;
+        min-height: 260px;
+    }
+
+    .recommendation-header {
+        margin-bottom: 1rem;
+        gap: 0.75rem;
+    }
+
+    .company-logo-placeholder {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .job-info h4 {
+        font-size: 1rem;
+    }
+
+    .job-details {
+        gap: 0.75rem;
+        margin-bottom: 1.25rem;
+        padding: 1rem 0;
+    }
+
+    .detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.375rem;
+        padding: 0.625rem 0;
+    }
+
+    .detail-label {
+        font-size: 0.75rem;
+        min-width: auto;
+        margin-bottom: 0.125rem;
+    }
+
+    .detail-value {
+        justify-content: flex-start;
+        font-size: 0.8rem;
+    }
+
+    .detail-value span {
+        text-align: left;
+    }
+
+    .recommendation-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 0.75rem;
+    }
+
+    .view-details-btn,
+    .apply-btn {
+        padding: 0.875rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recommendation-card {
+        padding: 1rem;
+        min-height: 240px;
+    }
+
+    .recommendation-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .match-percentage {
+        align-self: flex-end;
+        margin-top: -2rem;
+    }
+
+    .job-details {
+        gap: 0.625rem;
+        padding: 0.875rem 0;
+    }
+
+    .detail-row {
+        padding: 0.5rem 0;
+        gap: 0.25rem;
+    }
+
+    .detail-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+    }
+
+    .detail-value {
+        font-size: 0.75rem;
+    }
+
+    .job-info h4 {
+        font-size: 1rem;
+        white-space: normal;
+        overflow: visible;
+        text-overflow: visible;
+    }
+
+    .job-details {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .detail-item {
+        font-size: 0.8rem;
+    }
+
+    .recommendation-actions {
+        gap: 0.5rem;
+    }
+}
+
+/* Enhanced Hover Effects */
+.recommendation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.job-seeker-account.dark .recommendation-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Enhanced Focus States */
+.recommendation-card:focus-within {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.job-seeker-account.dark .recommendation-card:focus-within {
+    outline-color: #60a5fa;
+}
+
+/* Enhanced Loading Animation */
+.recommendations-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.recommendations-loading::before {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e2e8f0;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+.job-seeker-account.dark .recommendations-loading::before {
+    border-color: #334155;
+    border-top-color: #60a5fa;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Error State */
+.recommendations-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 8px;
+    color: #dc2626;
+    padding: 2rem;
+    text-align: center;
+}
+
+.job-seeker-account.dark .recommendations-error {
+    background: #1e1e1e;
+    border-color: #dc2626;
+    color: #fca5a5;
+}
+
+/* Enhanced Accessibility */
+@media (prefers-reduced_motion: reduce) {
+    .recommendation-card,
+    .view-details-btn,
+    .apply-btn,
+    .recommendations-loading::before {
+        transition: none;
+        animation: none;
+    }
+
+    .recommendation-card:hover {
+        transform: none;
+    }
+
+    .view-details-btn:hover,
+    .apply-btn:hover {
+        transform: none;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .recommendation-card {
+        border: 2px solid;
+    }
+
+    .view-details-btn {
+        border: 2px solid;
+    }
+
+    .apply-btn {
+        border: 2px solid #000;
+    }
+
+    .match-percentage {
+        border: 2px solid #10b981;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .recommendation-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+        background: white;
+        color: black;
+        page-break-inside: avoid;
+    }
+
+    .recommendation-actions {
+        display: none;
+    }
+
+    .job-seeker-account.dark .recommendation-card {
+        background: white;
+        color: black;
+        border: 1px solid #000;
+    }
+}
+
+/* Enhanced Grid Layout for Different Screen Sizes */
+@media (min-width: 1200px) {
+    .recommendations-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .recommendations-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .recommendations-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .recommendations-list {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+}
+
+/* Enhanced Card Layout */
+.recommendation-card {
+    position: relative;
+}
+
+.recommendation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 12px 12px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.recommendation-card:hover::before {
+    opacity: 1;
+}
+
+.job-seeker-account.dark .recommendation-card::before {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+}
+
+/* Enhanced Detail Items */
+.detail-item {
+    position: relative;
+    padding-left: 0.5rem;
+}
+
+.detail-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 60%;
+    background: #e2e8f0;
+    border-radius: 1px;
+}
+
+.job-seeker-account.dark .detail-item::before {
+    background: #334155;
+}
+
+/* Enhanced Button Layout */
+.recommendation-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+@media (max-width: 480px) {
+    .recommendation-actions {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+/* Enhanced Typography */
+.job-info h4 {
+    position: relative;
+    overflow: hidden;
+}
+
+.job-info h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    transition: width 0.3s ease;
+}
+
+.recommendation-card:hover .job-info h4::after {
+    width: 100%;
+}
+
+.job-seeker-account.dark .job-info h4::after {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+}
+
+/* Enhanced Match Badge */
+.match-percentage {
+    position: relative;
+    overflow: hidden;
+}
+
+.match-percentage::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(16, 185, 129, 0.1) 90deg, transparent 180deg);
+    animation: rotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.recommendation-card:hover .match-percentage::before {
+    opacity: 1;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Company Logo */
+.company-logo-placeholder {
+    position: relative;
+    overflow: hidden;
+}
+
+.company-logo-placeholder::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.2) 90deg, transparent 180deg);
+    animation: rotate 6s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.recommendation-card:hover .company-logo-placeholder::before {
+    opacity: 1;
+}
+
+/* Enhanced Responsive Typography */
+@media (max-width: 768px) {
+    .job-info h4 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .company-name {
+        font-size: 0.8rem;
+    }
+
+    .match-percentage span {
+        font-size: 1.25rem;
+    }
+
+    .detail-item {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .job-info h4 {
+        font-size: 0.95rem;
+    }
+
+    .company-name {
+        font-size: 0.75rem;
+    }
+
+    .match-percentage span {
+        font-size: 1.125rem;
+    }
+
+    .match-percentage p {
+        font-size: 0.7rem;
+    }
+}
+
+/* Enhanced Dark Mode Details */
+.job-seeker-account.dark .detail-item:hover {
+    background: rgba(96, 165, 250, 0.15);
+}
+
+.job-seeker-account.dark .recommendation-card:hover .job-info h4::after {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+}
+
+/* Enhanced Focus States */
+.view-details-btn:focus-visible,
+.apply-btn:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.job-seeker-account.dark .view-details-btn:focus-visible,
+.job-seeker-account.dark .apply-btn:focus-visible {
+    outline-color: #60a5fa;
+}
+
+/* Enhanced Loading States */
+.recommendations-loading {
+    position: relative;
+}
+
+.recommendations-loading::after {
+    content: 'Finding the best jobs for you...';
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.875rem;
+    color: #64748b;
+    animation: pulse 2s infinite;
+}
+
+.job-seeker-account.dark .recommendations-loading::after {
+    color: #cbd5e1;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/* Enhanced Error States */
+.recommendations-error {
+    position: relative;
+    overflow: hidden;
+}
+
+.recommendations-error::before {
+    content: '⚠️';
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.recommendations-error::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 30%, rgba(239, 68, 68, 0.05) 50%, transparent 70%);
+    animation: shimmer 2s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Enhanced Performance */
+.recommendation-card {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+.recommendation-card:hover {
+    will-change: transform, box-shadow;
+}
+
+.view-details-btn,
+.apply-btn {
+    will-change: transform;
+}
+
+.view-details-btn:hover,
+.apply-btn:hover {
+    will-change: transform, box-shadow;
+}
+
+/* Enhanced Micro-interactions */
+.recommendation-card {
+    transform: translateZ(0);
+}
+
+.detail-item {
+    transform: translateZ(0);
+}
+
+.view-details-btn,
+.apply-btn {
+    transform: translateZ(0);
+}
+
+/* Enhanced Visual Feedback */
+.recommendation-card:active {
+    transform: scale(0.98);
+}
+
+.view-details-btn:active,
+.apply-btn:active {
+    transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .recommendation-card:active {
+        transform: scale(0.99);
+    }
+
+    .view-details-btn:active,
+    .apply-btn:active {
+        transform: scale(0.97);
+    }
+}

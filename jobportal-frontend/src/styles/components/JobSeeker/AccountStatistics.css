@@ -1,0 +1,969 @@
+/* Account Statistics Section Styles */
+.account-statistics-section {
+    padding: 2rem 0;
+}
+
+.account-statistics-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.job-seeker-account.dark .account-statistics-section h2 {
+    color: #f8fafc;
+}
+
+.account-statistics-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Statistics Header */
+.account-stats h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.job-seeker-account.dark .account-stats h3 {
+    color: #f8fafc;
+}
+
+.stats-subtitle {
+    font-size: 0.875rem;
+    color: #64748b;
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.job-seeker-account.dark .stats-subtitle {
+    color: #cbd5e1;
+}
+
+/* Statistics Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-seeker-account.dark .stat-card {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 12px 12px 0 0;
+}
+
+.stat-card:nth-child(2)::before {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.stat-card:nth-child(3)::before {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.stat-card:nth-child(4)::before {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.stat-card:nth-child(5)::before {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.stat-card:nth-child(6)::before {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+/* Statistics Icon */
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.stat-card:hover .stat-icon::before {
+    opacity: 1;
+}
+
+.stat-icon.total {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.stat-icon.pending {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.stat-icon.approved {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.stat-icon.rejected {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.stat-icon.profile {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+}
+
+.stat-icon.trending {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    color: white;
+}
+
+/* Statistics Info */
+.stat-info h4 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin: 0 0 0.5rem 0;
+    line-height: 1;
+}
+
+.job-seeker-account.dark .stat-info h4 {
+    color: #f8fafc;
+}
+
+.stat-info p {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #64748b;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.job-seeker-account.dark .stat-info p {
+    color: #cbd5e1;
+}
+
+/* Application Status Overview */
+.application-trend {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+.job-seeker-account.dark .application-trend {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.application-trend h4 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.job-seeker-account.dark .application-trend h4 {
+    color: #f8fafc;
+}
+
+.trend-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.trend-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.bar {
+    flex: 1;
+    height: 24px;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    background: #f1f5f9;
+    transition: all 0.3s ease;
+}
+
+.job-seeker-account.dark .bar {
+    background: #334155;
+}
+
+.bar.pending-bar {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.bar.approved-bar {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.bar.rejected-bar {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-radius: inherit;
+    width: 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(100%); }
+}
+
+.trend-bar span {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+    min-width: 80px;
+}
+
+.job-seeker-account.dark .trend-bar span {
+    color: #e5e7eb;
+}
+
+.percentage {
+    font-size: 0.75rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.job-seeker-account.dark .percentage {
+    color: #9ca3af;
+}
+
+/* Enhanced Statistics Cards */
+.stat-card {
+    position: relative;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+    pointer-events: none;
+}
+
+.stat-card:hover::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* Enhanced Icons */
+.stat-icon {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.stat-card:nth-child(2):hover .stat-icon {
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+}
+
+.stat-card:nth-child(3):hover .stat-icon {
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.stat-card:nth-child(4):hover .stat-icon {
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.stat-card:nth-child(5):hover .stat-icon {
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+.stat-card:nth-child(6):hover .stat-icon {
+    box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3);
+}
+
+/* Enhanced Numbers */
+.stat-info h4 {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-info h4 {
+    transform: scale(1.05);
+    color: #3b82f6;
+}
+
+.stat-card:nth-child(2):hover .stat-info h4 {
+    color: #f59e0b;
+}
+
+.stat-card:nth-child(3):hover .stat-info h4 {
+    color: #10b981;
+}
+
+.stat-card:nth-child(4):hover .stat-info h4 {
+    color: #ef4444;
+}
+
+.stat-card:nth-child(5):hover .stat-info h4 {
+    color: #8b5cf6;
+}
+
+.stat-card:nth-child(6):hover .stat-info h4 {
+    color: #06b6d4;
+}
+
+.job-seeker-account.dark .stat-card:hover .stat-info h4 {
+    color: #60a5fa;
+}
+
+.job-seeker-account.dark .stat-card:nth-child(2):hover .stat-info h4 {
+    color: #fbbf24;
+}
+
+.job-seeker-account.dark .stat-card:nth-child(3):hover .stat-info h4 {
+    color: #34d399;
+}
+
+.job-seeker-account.dark .stat-card:nth-child(4):hover .stat-info h4 {
+    color: #f87171;
+}
+
+.job-seeker-account.dark .stat-card:nth-child(5):hover .stat-info h4 {
+    color: #a78bfa;
+}
+
+.job-seeker-account.dark .stat-card:nth-child(6):hover .stat-info h4 {
+    color: #22d3ee;
+}
+
+/* Enhanced Trend Bars */
+.trend-bar {
+    position: relative;
+    overflow: hidden;
+}
+
+.trend-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.trend-bar:hover::before {
+    opacity: 1;
+}
+
+/* Progress Animation */
+.bar {
+    position: relative;
+}
+
+.bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.2) 100%);
+    border-radius: inherit;
+    width: 0%;
+    animation: progressFill 2s ease-out forwards;
+}
+
+@keyframes progressFill {
+    0% { width: 0%; }
+    100% { width: var(--progress-width, 0%); }
+}
+
+/* Enhanced Application Trend */
+.application-trend {
+    position: relative;
+    overflow: hidden;
+}
+
+.application-trend::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 12px 12px 0 0;
+}
+
+/* Statistics Summary */
+.stats-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.summary-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+}
+
+.job-seeker-account.dark .summary-card {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%);
+    border-color: #64748b;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.summary-card h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+}
+
+.job-seeker-account.dark .summary-card h5 {
+    color: #f8fafc;
+}
+
+.summary-card p {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0;
+}
+
+.job-seeker-account.dark .summary-card p {
+    color: #cbd5e1;
+}
+
+/* Loading States */
+.stat-card.loading .stat-info h4 {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    color: transparent;
+    border-radius: 4px;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.stat-card.loading .stat-info p {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    color: transparent;
+    border-radius: 4px;
+    height: 12px;
+    margin-top: 0.5rem;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+    .account-statistics-section {
+        padding: 1.5rem 0;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .stat-info h4 {
+        font-size: 1.5rem;
+    }
+
+    .application-trend {
+        padding: 1.5rem;
+    }
+
+    .trend-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .trend-bar span {
+        min-width: auto;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .account-statistics-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1rem;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .stat-icon {
+        width: 50px;
+        height: 50px;
+        flex-shrink: 0;
+    }
+
+    .stat-info {
+        text-align: left;
+    }
+
+    .stat-info h4 {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .application-trend {
+        padding: 1rem;
+    }
+
+    .trend-bars {
+        gap: 0.75rem;
+    }
+
+    .trend-bar {
+        gap: 0.75rem;
+    }
+
+    .bar {
+        height: 20px;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced_motion: reduce) {
+    .stat-card,
+    .summary-card,
+    .application-trend,
+    .stat-icon,
+    .stat-info h4,
+    .trend-bar {
+        transition: none;
+    }
+
+    .stat-card:hover,
+    .summary-card:hover {
+        transform: none;
+    }
+
+    .stat-card:hover .stat-icon,
+    .stat-card:hover .stat-info h4 {
+        transform: none;
+    }
+
+    .bar::after,
+    .bar::before {
+        animation: none;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .stat-card,
+    .summary-card,
+    .application-trend {
+        border: 2px solid;
+    }
+
+    .stat-icon {
+        border: 2px solid white;
+    }
+
+    .bar {
+        border: 1px solid;
+    }
+}
+
+/* Focus visible for better accessibility */
+.stat-card:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.job-seeker-account.dark .stat-card:focus-visible {
+    outline-color: #60a5fa;
+}
+
+/* Print styles */
+@media print {
+    .stat-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+        margin-bottom: 1rem;
+    }
+
+    .application-trend {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #000;
+        margin-bottom: 1rem;
+    }
+
+    .stat-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .summary-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* Enhanced visual hierarchy */
+.account-statistics-section h2 {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.account-statistics-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 2px;
+}
+
+/* Enhanced card animations */
+@keyframes cardEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-card {
+    animation: cardEntrance 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+.stat-card:nth-child(5) { animation-delay: 0.5s; }
+.stat-card:nth-child(6) { animation-delay: 0.6s; }
+
+.application-trend {
+    animation: cardEntrance 0.6s ease-out 0.7s;
+    animation-fill-mode: both;
+}
+
+/* Enhanced hover effects */
+.stat-card:hover .stat-icon {
+    animation: bounce 0.6s ease;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.1);
+    }
+    60% {
+        transform: scale(1.05);
+    }
+}
+
+/* Enhanced progress bars */
+.bar {
+    position: relative;
+    overflow: hidden;
+}
+
+.bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: progressShine 2s infinite;
+}
+
+@keyframes progressShine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Enhanced statistics numbers */
+.stat-info h4 {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-info h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    transition: width 0.3s ease;
+}
+
+.stat-card:hover .stat-info h4::after {
+    width: 100%;
+}
+
+.stat-card:nth-child(2):hover .stat-info h4::after {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.stat-card:nth-child(3):hover .stat-info h4::after {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.stat-card:nth-child(4):hover .stat-info h4::after {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.stat-card:nth-child(5):hover .stat-info h4::after {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.stat-card:nth-child(6):hover .stat-info h4::after {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+/* Enhanced application trend */
+.application-trend h4 {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.application-trend h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 1px;
+}
+
+/* Enhanced summary cards */
+.stats-summary {
+    animation: cardEntrance 0.6s ease-out 0.8s;
+    animation-fill-mode: both;
+}
+
+.summary-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 12px 12px 0 0;
+}
+
+/* Enhanced loading animation */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.stat-card.loading {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Enhanced focus states */
+.stat-card:focus-visible {
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.job-seeker-account.dark .stat-card:focus-visible {
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1), 0 4px 12px rgba(96, 165, 250, 0.15);
+}
+
+/* Enhanced mobile optimizations */
+@media (max-width: 768px) {
+    .stat-card:hover::after {
+        width: 150px;
+        height: 150px;
+    }
+
+    .stat-card:hover .stat-icon {
+        transform: scale(1.05);
+    }
+
+    .stat-card:hover .stat-info h4 {
+        transform: scale(1.02);
+    }
+}
+
+/* Enhanced accessibility */
+@media (prefers-reduced_motion: reduce) {
+    .stat-card,
+    .summary-card,
+    .stat-icon,
+    .stat-info h4,
+    .bar::before,
+    .bar::after {
+        animation: none;
+    }
+
+    .stat-card:hover .stat-icon {
+        animation: none;
+    }
+
+    .stat-card:hover .stat-info h4::after {
+        transition: none;
+    }
+}
+
+/* Enhanced print styles */
+@media print {
+    .stat-card {
+        page-break-inside: avoid;
+        border: 1px solid #000 !important;
+        background: white !important;
+        color: black !important;
+    }
+
+    .stat-info h4 {
+        color: black !important;
+    }
+
+    .stat-info p {
+        color: #333 !important;
+    }
+
+    .application-trend {
+        page-break-inside: avoid;
+        border: 1px solid #000 !important;
+        background: white !important;
+        color: black !important;
+    }
+}
