@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use PDO;
+
+// ============================================
+// SIMPLE ROUTES
+// ============================================
 
 Route::get('/', function () {
     return 'Job Portal API is running!';
@@ -75,4 +80,79 @@ Route::get('/debug-companies', function() {
             'message' => $e->getMessage(),
         ]);
     }
+});
+
+// ============================================
+// NEW DETAILED DEBUG ROUTES
+// ============================================
+
+Route::get('/debug-env-file', function() {
+    $envPath = base_path('.env');
+    if (file_exists($envPath)) {
+        $content = file_get_contents($envPath);
+        // Mask password for security
+        $content = preg_replace('/DB_PASSWORD=.*/', 'DB_PASSWORD=***MASKED***', $content);
+        return response()->json([
+            'status' => 'exists',
+            'path' => $envPath,
+            'content' => $content,
+            'permissions' => substr(sprintf('%o', fileperms($envPath)), -4),
+        ]);
+    } else {
+        return response()->json([
+            'status' => 'not_found',
+            'path' => $envPath,
+        ]);
+    }
+});
+
+Route::get('/debug-direct-db', function() {
+    try {
+        $host = 'mysql-2cada97c-absra-jobportal.e.aivencloud.com';
+        $port = '26003';
+        $dbname = 'defaultdb';
+        $user = 'avnadmin';
+        $pass = 'AVNS_vbj5SN5bGRhvt90IT1V';
+        
+        $pdo = new PDO("mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4", $user, $pass, [
+            PDO::MYSQL_ATTR_SSL_CA => '/var/www/html/ca.pem',
+            PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+        ]);
+        
+        $stmt = $pdo->query('SELECT DATABASE()');
+        $db = $stmt->fetchColumn();
+        
+        return response()->json([
+            'status' => 'connected',
+            'database' => $db,
+            'host' => $host,
+            'user' => $user,
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => $e->getMessage(),
+            'code' => $e->getCode(),
+        ]);
+    }
+});
+
+Route::get('/debug-aiven', function() {
+    $host = 'mysql-2cada97c-absra-jobportal.e.aivencloud.com';
+    $port = '26003';
+    
+    // Test DNS resolution
+    $ip = gethostbyname($host);
+    
+    // Test port connection
+    $connection = @fsockopen($host, $port, $errno, $errstr, 5);
+    
+    return response()->json([
+        'host' => $host,
+        'port' => $port,
+        'resolved_ip' => $ip,
+        'port_open' => $connection !== false,
+        'errno' => $errno ?? null,
+        'errstr' => $errstr ?? null,
+    ]);
 });
