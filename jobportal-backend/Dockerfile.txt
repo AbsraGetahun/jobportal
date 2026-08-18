@@ -1,19 +1,75 @@
-# Create startup script with HARDCODED password
-RUN echo '#!/bin/bash' > /start.sh && \
-    echo 'echo "APP_ENV=production" > /var/www/html/.env' >> /start.sh && \
-    echo 'echo "APP_DEBUG=false" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "APP_URL=https://jobportal-y56o.onrender.com" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "DB_CONNECTION=mysql" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "DB_HOST=mysql-2cada97c-absra-jobportal.e.aivencloud.com" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "DB_PORT=26003" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "DB_DATABASE=defaultdb" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "DB_USERNAME=avnadmin" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "DB_PASSWORD=AVNS_vbj5SN5bGRhvt90IT1V" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "DB_SSL_CA=/var/www/html/ca.pem" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "CACHE_STORE=file" >> /var/www/html/.env' >> /start.sh && \
-    echo 'echo "SESSION_DRIVER=file" >> /var/www/html/.env' >> /start.sh && \
-    echo 'php artisan config:clear' >> /start.sh && \
-    echo 'php artisan cache:clear' >> /start.sh && \
-    echo 'php artisan migrate --force' >> /start.sh && \
-    echo 'php artisan serve --host=0.0.0.0 --port=8080' >> /start.sh && \
-    chmod +x /start.sh
+FROM php:8.2-fpm
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip \
+    nginx
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+
+# Install Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Set working directory
+WORKDIR /var/www/html
+
+# Create ALL required directories
+RUN mkdir -p /var/www/html/bootstrap/cache \
+    && mkdir -p /var/www/html/storage \
+    && mkdir -p /var/www/html/storage/app \
+    && mkdir -p /var/www/html/storage/framework \
+    && mkdir -p /var/www/html/storage/framework/cache \
+    && mkdir -p /var/www/html/storage/framework/sessions \
+    && mkdir -p /var/www/html/storage/framework/views \
+    && mkdir -p /var/www/html/storage/framework/testing \
+    && mkdir -p /var/www/html/storage/logs \
+    && chmod -R 777 /var/www/html/bootstrap \
+    && chmod -R 777 /var/www/html/storage
+
+# Copy application
+COPY jobportal-backend/ .
+
+# Copy SSL certificate
+COPY jobportal-backend/ca.pem /var/www/html/ca.pem
+
+# COPY THE .env FILE (created locally, NOT committed to GitHub)
+COPY .env /var/www/html/.env
+
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader
+
+# Generate application key
+RUN php artisan key:generate
+
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 777 /var/www/html/storage \
+    && chmod -R 777 /var/www/html/bootstrap/cache \
+    && chmod 644 /var/www/html/.env
+
+# Nginx configuration
+RUN echo 'server { \
+    listen 8080; \
+    root /var/www/html/public; \
+    index index.php; \
+    location / { \
+        try_files $uri $uri/ /index.php?$query_string; \
+    } \
+    location ~ \.php$ { \
+        fastcgi_pass 127.0.0.1:9000; \
+        fastcgi_index index.php; \
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; \
+        include fastcgi_params; \
+    } \
+}' > /etc/nginx/sites-enabled/default
+
+EXPOSE 8080
+
+CMD ["sh", "-c", "php artisan config:clear && php artisan cache:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"]
