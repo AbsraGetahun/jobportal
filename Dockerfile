@@ -14,6 +14,19 @@ COPY jobportal-backend/ .
 
 COPY jobportal-backend/ca.pem /var/www/html/ca.pem
 
+RUN echo "APP_ENV=production" > /var/www/html/.env && \
+    echo "APP_DEBUG=false" >> /var/www/html/.env && \
+    echo "APP_URL=https://jobportal-y56o.onrender.com" >> /var/www/html/.env && \
+    echo "DB_CONNECTION=mysql" >> /var/www/html/.env && \
+    echo "DB_HOST=mysql-2cada97c-absra-jobportal.e.aivencloud.com" >> /var/www/html/.env && \
+    echo "DB_PORT=26003" >> /var/www/html/.env && \
+    echo "DB_DATABASE=defaultdb" >> /var/www/html/.env && \
+    echo "DB_USERNAME=avnadmin" >> /var/www/html/.env && \
+    echo "DB_PASSWORD=${DB_PASSWORD}" >> /var/www/html/.env && \
+    echo "DB_SSL_CA=/var/www/html/ca.pem" >> /var/www/html/.env && \
+    echo "CACHE_STORE=file" >> /var/www/html/.env && \
+    echo "SESSION_DRIVER=file" >> /var/www/html/.env
+
 RUN composer install --no-dev --optimize-autoloader
 
 RUN php artisan key:generate
