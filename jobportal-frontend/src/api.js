@@ -2,9 +2,8 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api',
+  baseURL: process.env.REACT_APP_API_URL || 'https://jobportal-y56o.onrender.com/api',
 });
-
 
 // Add interceptors for error handling and token management
 api.interceptors.request.use((config) => {
@@ -69,6 +68,7 @@ api.interceptors.response.use(
     }
   }
 );
+
 export default {
   // Generic HTTP methods for backward compatibility
   get: (url, config = {}) => api.get(url, config),
@@ -184,8 +184,7 @@ export default {
   }),
   verifyAuth: () => {
     // Create a new instance without the skip auth logic for login/register
-    const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
-    const finalApiUrl = API_BASE_URL.endsWith('/api') ? API_BASE_URL : `${API_BASE_URL}/api`;
+    const finalApiUrl = process.env.REACT_APP_API_URL || 'https://jobportal-y56o.onrender.com/api';
 
     const authApi = axios.create({
       baseURL: finalApiUrl,
