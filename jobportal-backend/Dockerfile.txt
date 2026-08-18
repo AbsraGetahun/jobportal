@@ -20,7 +20,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-# Create ALL required directories with explicit permissions
+# Create ALL required directories
 RUN mkdir -p /var/www/html/bootstrap/cache \
     && mkdir -p /var/www/html/storage \
     && mkdir -p /var/www/html/storage/app \
@@ -31,13 +31,7 @@ RUN mkdir -p /var/www/html/bootstrap/cache \
     && mkdir -p /var/www/html/storage/framework/testing \
     && mkdir -p /var/www/html/storage/logs \
     && chmod -R 777 /var/www/html/bootstrap \
-    && chmod -R 777 /var/www/html/storage \
-    && chmod -R 777 /var/www/html/storage/logs \
-    && chmod -R 777 /var/www/html/storage/framework \
-    && chmod -R 777 /var/www/html/storage/framework/cache \
-    && chmod -R 777 /var/www/html/storage/framework/sessions \
-    && chmod -R 777 /var/www/html/storage/framework/views \
-    && chmod -R 777 /var/www/html/storage/framework/testing
+    && chmod -R 777 /var/www/html/storage
 
 # Copy application
 COPY jobportal-backend/ .
@@ -54,9 +48,7 @@ RUN php artisan key:generate
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 777 /var/www/html/storage \
-    && chmod -R 777 /var/www/html/bootstrap/cache \
-    && chmod -R 777 /var/www/html/storage/logs \
-    && chmod -R 777 /var/www/html/storage/framework
+    && chmod -R 777 /var/www/html/bootstrap/cache
 
 # Nginx configuration
 RUN echo 'server { \
@@ -76,4 +68,5 @@ RUN echo 'server { \
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "php artisan config:clear && php artisan cache:clear && php artisan view:clear && php artisan route:clear && php artisan optimize:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"]
+# Clear config cache and re-cache to force .env re-reading
+CMD ["sh", "-c", "php artisan config:clear && php artisan config:cache && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"]
