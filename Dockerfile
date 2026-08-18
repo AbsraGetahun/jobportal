@@ -22,18 +22,18 @@ COPY jobportal-backend/ .
 # Copy SSL certificate
 COPY jobportal-backend/ca.pem /var/www/html/ca.pem
 
-# Create .env from example
-RUN cp .env.example .env && \
-    sed -i "s|APP_ENV=.*|APP_ENV=production|" .env && \
-    sed -i "s|APP_DEBUG=.*|APP_DEBUG=false|" .env && \
-    sed -i "s|APP_URL=.*|APP_URL=https://job-portal-api-wifg.onrender.com|" .env && \
-    sed -i "s|DB_CONNECTION=.*|DB_CONNECTION=mysql|" .env && \
-    sed -i "s|DB_HOST=.*|DB_HOST=mysql-2cada97c-absra-jobportal.e.aivencloud.com|" .env && \
-    sed -i "s|DB_PORT=.*|DB_PORT=26003|" .env && \
-    sed -i "s|DB_DATABASE=.*|DB_DATABASE=defaultdb|" .env && \
-    sed -i "s|DB_USERNAME=.*|DB_USERNAME=avnadmin|" .env && \
-    sed -i "s|DB_PASSWORD=.*|DB_PASSWORD=${DB_PASSWORD}|" .env && \
-    echo "DB_SSL_CA=/var/www/html/ca.pem" >> .env
+# Create .env file directly (skip .env.example)
+RUN echo "APP_ENV=production" > /var/www/html/.env && \
+    echo "APP_DEBUG=false" >> /var/www/html/.env && \
+    echo "APP_URL=https://jobportal.onrender.com" >> /var/www/html/.env && \
+    echo "DB_CONNECTION=mysql" >> /var/www/html/.env && \
+    echo "DB_HOST=mysql-2cada97c-absra-jobportal.e.aivencloud.com" >> /var/www/html/.env && \
+    echo "DB_PORT=26003" >> /var/www/html/.env && \
+    echo "DB_DATABASE=defaultdb" >> /var/www/html/.env && \
+    echo "DB_USERNAME=avnadmin" >> /var/www/html/.env && \
+    echo "DB_PASSWORD=${DB_PASSWORD}" >> /var/www/html/.env && \
+    echo "DB_SSL_CA=/var/www/html/ca.pem" >> /var/www/html/.env && \
+    echo "APP_KEY=" >> /var/www/html/.env
 
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
