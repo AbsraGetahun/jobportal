@@ -155,3 +155,22 @@ Route::get('/debug-aiven', function() {
         'errstr' => $errstr ?? null,
     ]);
 });
+Route::get('/debug-log', function() {
+    $logPath = storage_path('logs/laravel.log');
+    if (file_exists($logPath)) {
+        $content = file_get_contents($logPath);
+        // Get last 50 lines
+        $lines = explode("\n", $content);
+        $lastLines = array_slice($lines, -50);
+        return response()->json([
+            'status' => 'exists',
+            'path' => $logPath,
+            'last_50_lines' => implode("\n", $lastLines),
+        ]);
+    } else {
+        return response()->json([
+            'status' => 'not_found',
+            'path' => $logPath,
+        ]);
+    }
+});
