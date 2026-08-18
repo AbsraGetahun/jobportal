@@ -40,7 +40,7 @@ RUN echo "APP_ENV=production" > /var/www/html/.env && \
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Generate key only (skip cache clearing during build)
+# Generate key only
 RUN php artisan key:generate
 
 # Set permissions
@@ -51,4 +51,6 @@ RUN chown -R www-data:www-data /var/www/html && \
 RUN echo 'server { listen 8080; root /var/www/html/public; index index.php; location / { try_files $uri $uri/ /index.php?$query_string; } location ~ \.php$ { fastcgi_pass 127.0.0.1:9000; fastcgi_index index.php; fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name; include fastcgi_params; } }' > /etc/nginx/sites-enabled/default
 
 EXPOSE 8080
-CMD ["sh", "-c", "php artisan config:clear && php artisan cache:clear && php artisan view:clear && php artisan route:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"]
+
+# Start command - removed view:clear
+CMD ["sh", "-c", "php artisan config:clear && php artisan cache:clear && php artisan route:clear && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080"]
