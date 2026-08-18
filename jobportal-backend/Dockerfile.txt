@@ -1,12 +1,5 @@
 FROM php:8.2-fpm
 
-# Build arguments (passed from Render)
-ARG DB_PASSWORD
-ARG DB_HOST
-ARG DB_PORT
-ARG DB_DATABASE
-ARG DB_USERNAME
-
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -46,21 +39,6 @@ COPY jobportal-backend/ .
 # Copy SSL certificate
 COPY jobportal-backend/ca.pem /var/www/html/ca.pem
 
-# Create .env file using build arguments
-RUN echo "APP_ENV=production" > /var/www/html/.env && \
-    echo "APP_DEBUG=false" >> /var/www/html/.env && \
-    echo "APP_URL=https://jobportal-y56o.onrender.com" >> /var/www/html/.env && \
-    echo "DB_CONNECTION=mysql" >> /var/www/html/.env && \
-    echo "DB_HOST=${DB_HOST}" >> /var/www/html/.env && \
-    echo "DB_PORT=${DB_PORT}" >> /var/www/html/.env && \
-    echo "DB_DATABASE=${DB_DATABASE}" >> /var/www/html/.env && \
-    echo "DB_USERNAME=${DB_USERNAME}" >> /var/www/html/.env && \
-    echo "DB_PASSWORD=${DB_PASSWORD}" >> /var/www/html/.env && \
-    echo "DB_SSL_CA=/var/www/html/ca.pem" >> /var/www/html/.env && \
-    echo "APP_KEY=" >> /var/www/html/.env && \
-    echo "CACHE_STORE=file" >> /var/www/html/.env && \
-    echo "SESSION_DRIVER=file" >> /var/www/html/.env
-
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader
 
@@ -70,8 +48,7 @@ RUN php artisan key:generate
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 777 /var/www/html/storage \
-    && chmod -R 777 /var/www/html/bootstrap/cache \
-    && chmod 644 /var/www/html/.env
+    && chmod -R 777 /var/www/html/bootstrap/cache
 
 # Nginx configuration
 RUN echo 'server { \
@@ -91,4 +68,19 @@ RUN echo 'server { \
 
 EXPOSE 8080
 
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=8080"]
+# Create .env file at RUNTIME using Render's environment variables
+CMD ["sh", "-c", "echo 'APP_ENV=production' > /var/www/html/.env && \
+    echo 'APP_DEBUG=false' >> /var/www/html/.env && \
+    echo 'APP_URL=https://jobportal-y56o.onrender.com' >> /var/www/html/.env && \
+    echo 'DB_CONNECTION=mysql' >> /var/www/html/.env && \
+    echo 'DB_HOST=$DB_HOST' >> /var/www/html/.env && \
+    echo 'DB_PORT=$DB_PORT' >> /var/www/html/.env && \
+    echo 'DB_DATABASE=$DB_DATABASE' >> /var/www/html/.env && \
+    echo 'DB_USERNAME=$DB_USERNAME' >> /var/www/html/.env && \
+    echo 'DB_PASSWORD=$DB_PASSWORD' >> /var/www/html/.env && \
+    echo 'DB_SSL_CA=/var/www/html/ca.pem' >> /var/www/html/.env && \
+    echo 'CACHE_STORE=file' >> /var/www/html/.env && \
+    echo 'SESSION_DRIVER=file' >> /var/www/html/.env && \
+    php artisan config:clear && \
+    php artisan cache:clear && \
+    php artisan serve --host=0.0.0.0 --port=8080"]
