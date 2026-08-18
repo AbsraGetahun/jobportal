@@ -198,3 +198,42 @@ Route::get('/debug-storage', function() {
     
     return response()->json($results);
 });
+Route::get('/debug-log-config', function() {
+    return response()->json([
+        'log_channel' => config('logging.default'),
+        'log_channels' => array_keys(config('logging.channels')),
+        'log_path' => config('logging.channels.single.path') ?? 'not_set',
+    ]);
+});
+
+Route::get('/debug-php-error', function() {
+    // Force a PHP error to see if error reporting works
+    try {
+        throw new Exception('Test exception - this is a debug test');
+    } catch (Exception $e) {
+        return response()->json([
+            'message' => 'Exception caught',
+            'error' => $e->getMessage(),
+            'file' => $e->getFile(),
+            'line' => $e->getLine(),
+        ]);
+    }
+});
+
+Route::get('/debug-api-test', function() {
+    try {
+        // Try to query the jobs table directly using DB facade
+        $jobs = DB::table('jobs')->take(1)->get();
+        return response()->json([
+            'status' => 'success',
+            'jobs_found' => $jobs->count(),
+            'sample' => $jobs->first(),
+        ]);
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => $e->getMessage(),
+            'trace' => $e->getTraceAsString(),
+        ]);
+    }
+});
