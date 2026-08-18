@@ -174,3 +174,27 @@ Route::get('/debug-log', function() {
         ]);
     }
 });
+Route::get('/debug-storage', function() {
+    $paths = [
+        'storage' => storage_path(),
+        'storage/logs' => storage_path('logs'),
+        'storage/framework' => storage_path('framework'),
+        'storage/framework/cache' => storage_path('framework/cache'),
+        'storage/framework/sessions' => storage_path('framework/sessions'),
+        'storage/framework/views' => storage_path('framework/views'),
+    ];
+    
+    $results = [];
+    foreach ($paths as $name => $path) {
+        $exists = file_exists($path);
+        $isWritable = $exists ? is_writable($path) : false;
+        $results[$name] = [
+            'path' => $path,
+            'exists' => $exists,
+            'writable' => $isWritable,
+            'permissions' => $exists ? substr(sprintf('%o', fileperms($path)), -4) : 'N/A',
+        ];
+    }
+    
+    return response()->json($results);
+});
